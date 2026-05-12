@@ -10,23 +10,42 @@
     "setup.mjs",
     "setup_bun.js",
     "bun_environment.js",
+    "bundle.js",
+    "setup-intercom.sh",
+    "composerPlugin.php",
+    "package-updated.tgz",
     "transformers.pyz"
   ],
   "knownSha256": {
+    "46faab8ab153fae6e80e7cca38eab363075bb524edd79e42269217a083628f09": "Shai-Hulud v1 bundle.js",
     "ab4fcadaec49c03278063dd269ea5eef82d24f2124a8e15d7b90f2fa8601266c": "router_init.js",
     "2ec78d556d696e208927cc503d48e4b5eb56b31abc2870c2ed2e98d6be27fc96": "router_init.js",
     "2258284d65f63829bd67eaba01ef6f1ada2f593f9bbe41678b2df360bd90d3df": "setup.mjs",
-    "1e8538c6e0563d50da0f2e097e979ebd5294ce1defe01d0b9fe361ba3bed1898": "trojanized tarball"
+    "1e8538c6e0563d50da0f2e097e979ebd5294ce1defe01d0b9fe361ba3bed1898": "trojanized tarball",
+    "66664a49edbcee0ed0d8365839707916e92d3aa06e7f26f33c9dcc58e5fc1ef3": "intercom/intercom-php 5.0.2 zip",
+    "907aec5b1288057a3e0885226918b6930a62a0f348ce23de026a683238c7903e": "intercom/intercom-php composer.json",
+    "50212a875643520353df158196b9b3be4595094125ad8d2d2c48bdd9cb04ce1f": "intercom/intercom-php router_runtime.js",
+    "832a976d1a8d54e296e8479aedbd89fa24baa02b8409a78bf06d4d03340881bd": "intercom/intercom-php setup-intercom.sh",
+    "b084743bd16043461e68b604dde80a8b386b405eae6f66c1103fb4fd6831d4a7": "intercom/intercom-php composerPlugin.php"
   },
   "knownSha1": {
     "e7d582b98ca80690883175470e96f703ef6dc497": "router_init.js",
     "12f35b1081b17d21815b35feb57ab03d02482116": "setup.mjs",
-    "820fa07a7328b6cf2b417078e103721d4d8f2e79": "opensearch_init.js"
+    "820fa07a7328b6cf2b417078e103721d4d8f2e79": "opensearch_init.js",
+    "d60ec97eea19fffb4809bc35b91033b52490ca11": "org.mvnpm:posthog-node bun_environment.js"
   },
   "iocs": [
     {
       "label": "C2 domain",
       "pattern": "(?i)git-tanstack\\.com"
+    },
+    {
+      "label": "Mini Shai-Hulud masscan C2",
+      "pattern": "(?i)(api|zero)\\.masscan\\.cloud"
+    },
+    {
+      "label": "Mini Shai-Hulud Catbox payload",
+      "pattern": "(?i)litter\\.catbox\\.moe/(h8nc9u\\.js|7rrc6l\\.mjs)"
     },
     {
       "label": "Session infrastructure",
@@ -81,8 +100,24 @@
       "pattern": "(?i)webhook\\.site/bb8ca5f6-4175-45d2-b042-fc9ebb8170b7"
     },
     {
+      "label": "Shai-Hulud v1 bundle hash",
+      "pattern": "(?i)46faab8ab153fae6e80e7cca38eab363075bb524edd79e42269217a083628f09"
+    },
+    {
+      "label": "Shai-Hulud v1 workflow name",
+      "pattern": "(?i)shai-hulud-workflow\\.yml"
+    },
+    {
+      "label": "Shai-Hulud v1 propagation API",
+      "pattern": "(?i)NpmModule\\.updatePackage"
+    },
+    {
       "label": "Shai-Hulud 2 repository marker",
       "pattern": "(?i)Sha1-Hulud: The (Second|Continued) Coming"
+    },
+    {
+      "label": "Shai-Hulud 2 Maven mirror hash",
+      "pattern": "(?i)d60ec97eea19fffb4809bc35b91033b52490ca11"
     },
     {
       "label": "Shai-Hulud 2 runner",
@@ -103,6 +138,30 @@
     {
       "label": "TeamPCP archive",
       "pattern": "(?i)tpcp\\.tar\\.gz"
+    },
+    {
+      "label": "Mini Shai-Hulud campaign marker",
+      "pattern": "(?i)A Mini Shai-Hulud has Appeared|EveryBoiWeBuildIsAWormyBoi|svksjrhjkcejg"
+    },
+    {
+      "label": "Mini Shai-Hulud spoofed author",
+      "pattern": "(?i)claude@users\\.noreply\\.github\\.com"
+    },
+    {
+      "label": "Intercom npm payload files",
+      "pattern": "(?i)(setup\\.mjs.{0,300}router_runtime\\.js|router_runtime\\.js.{0,300}setup\\.mjs)"
+    },
+    {
+      "label": "Intercom Packagist plugin execution",
+      "pattern": "(?i)(Intercom\\\\\\\\ComposerPlugin|setup-intercom\\.sh|Running Intercom setup script|composer-plugin-api)"
+    },
+    {
+      "label": "Intercom Packagist C2",
+      "pattern": "(?i)zero\\.masscan\\.cloud(:443)?/v1/telemetry"
+    },
+    {
+      "label": "Mini Shai-Hulud generated archive",
+      "pattern": "(?i)package-updated\\.tgz"
     }
   ]
 }
