@@ -14,7 +14,10 @@
     "setup-intercom.sh",
     "composerPlugin.php",
     "package-updated.tgz",
-    "transformers.pyz"
+    "transformers.pyz",
+    "gh-token-monitor.service",
+    "gh-token-monitor.sh",
+    "com.user.gh-token-monitor.plist"
   ],
   "knownSha256": {
     "46faab8ab153fae6e80e7cca38eab363075bb524edd79e42269217a083628f09": "Shai-Hulud v1 bundle.js",
@@ -68,20 +71,38 @@
       "pattern": "(?i)github:tanstack/router#79ac49eedf774dd4b0cfa308722bc463cfe5885c"
     },
     {
-      "label": "gh-token-monitor",
-      "pattern": "(?i)gh-token-monitor"
+      "label": "dead man's switch service name",
+      "pattern": "(?i)gh-token-monitor",
+      "severity": "critical"
+    },
+    {
+      "label": "dead man's switch persistence path",
+      "pattern": "(?i)(Library/LaunchAgents/com\\.user\\.gh-token-monitor\\.plist|\\.config/systemd/user/gh-token-monitor\\.service|\\.local/bin/gh-token-monitor\\.sh)",
+      "severity": "critical"
     },
     {
       "label": "repository description",
       "pattern": "(?i)Shai-Hulud: Here We Go Again"
     },
     {
-      "label": "wiper commit message",
-      "pattern": "(?i)IfYouRevokeThisTokenItWillWipeTheComputerOfTheOwner"
+      "label": "dead man's switch commit marker",
+      "pattern": "(?i)IfYouRevokeThisTokenItWillWipeTheComputerOfTheOwner",
+      "severity": "critical"
     },
     {
-      "label": "destructive command",
-      "pattern": "rm\\s+-rf\\s+~/"
+      "label": "dead man's switch destructive command",
+      "pattern": "rm\\s+-rf\\s+~/",
+      "severity": "critical"
+    },
+    {
+      "label": "dead man's switch GitHub polling",
+      "pattern": "(?is)(api\\.github\\.com/user|github\\.com/search/commits).{0,400}(60000|60\\s*\\*\\s*1000|IfYouRevokeThisTokenItWillWipeTheComputerOfTheOwner)",
+      "severity": "critical"
+    },
+    {
+      "label": "dead man's switch 24h TTL",
+      "pattern": "(?i)(86400000|24\\s*\\*\\s*60\\s*\\*\\s*60\\s*\\*\\s*1000).{0,240}(process\\.exit|clearInterval|exit)",
+      "severity": "high"
     },
     {
       "label": "UiPath setup hook",
