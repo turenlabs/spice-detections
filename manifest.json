@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-05-12T00:00:00Z",
+  "packs": [
+    {
+      "id": "mini-shai-hulud-2026-05",
+      "campaign": "Mini Shai-Hulud May 2026",
+      "url": "packs/mini-shai-hulud-2026-05.json",
+      "affectedPackagesUrl": "packs/mini-shai-hulud-2026-05-packages.csv"
+    }
+  ]
+}

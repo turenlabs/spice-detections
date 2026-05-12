@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "id": "mini-shai-hulud-2026-05",
+  "campaign": "Mini Shai-Hulud May 2026",
+  "suspiciousFilenames": [
+    "router_init.js",
+    "opensearch_init.js",
+    "router_runtime.js",
+    "tanstack_runner.js",
+    "setup.mjs",
+    "setup_bun.js",
+    "bun_environment.js",
+    "transformers.pyz"
+  ],
+  "knownSha256": {
+    "ab4fcadaec49c03278063dd269ea5eef82d24f2124a8e15d7b90f2fa8601266c": "router_init.js",
+    "2ec78d556d696e208927cc503d48e4b5eb56b31abc2870c2ed2e98d6be27fc96": "router_init.js",
+    "2258284d65f63829bd67eaba01ef6f1ada2f593f9bbe41678b2df360bd90d3df": "setup.mjs",
+    "1e8538c6e0563d50da0f2e097e979ebd5294ce1defe01d0b9fe361ba3bed1898": "trojanized tarball"
+  },
+  "knownSha1": {
+    "e7d582b98ca80690883175470e96f703ef6dc497": "router_init.js",
+    "12f35b1081b17d21815b35feb57ab03d02482116": "setup.mjs",
+    "820fa07a7328b6cf2b417078e103721d4d8f2e79": "opensearch_init.js"
+  },
+  "iocs": [
+    {
+      "label": "C2 domain",
+      "pattern": "(?i)git-tanstack\\.com"
+    },
+    {
+      "label": "Session infrastructure",
+      "pattern": "(?i)(seed[123]|filev2)\\.getsession\\.org"
+    },
+    {
+      "label": "Session recipient",
+      "pattern": "(?i)05f9e609d79eed391015e11380dee4b5c9ead0b6e2e7f0134e6e51767a87323026"
+    },
+    {
+      "label": "C2 IP",
+      "pattern": "83\\.142\\.209\\.194"
+    },
+    {
+      "label": "PyPI payload URL",
+      "pattern": "(?i)git-tanstack\\.com/tmp/transformers\\.pyz"
+    },
+    {
+      "label": "malicious TanStack git dependency",
+      "pattern": "(?i)github:tanstack/router#79ac49eedf774dd4b0cfa308722bc463cfe5885c"
+    },
+    {
+      "label": "gh-token-monitor",
+      "pattern": "(?i)gh-token-monitor"
+    },
+    {
+      "label": "repository description",
+      "pattern": "(?i)Shai-Hulud: Here We Go Again"
+    },
+    {
+      "label": "wiper commit message",
+      "pattern": "(?i)IfYouRevokeThisTokenItWillWipeTheComputerOfTheOwner"
+    },
+    {
+      "label": "destructive command",
+      "pattern": "rm\\s+-rf\\s+~/"
+    },
+    {
+      "label": "UiPath setup hook",
+      "pattern": "(?i)\"preinstall\"\\s*:\\s*\"node setup\\.mjs\""
+    },
+    {
+      "label": "Shai-Hulud 1 workflow",
+      "pattern": "(?i)shai-hulud(-workflow)?\\.ya?ml"
+    },
+    {
+      "label": "Shai-Hulud migration repo",
+      "pattern": "(?i)Shai-Hulud Migration|-migration"
+    },
+    {
+      "label": "Shai-Hulud webhook",
+      "pattern": "(?i)webhook\\.site/bb8ca5f6-4175-45d2-b042-fc9ebb8170b7"
+    },
+    {
+      "label": "Shai-Hulud 2 repository marker",
+      "pattern": "(?i)Sha1-Hulud: The (Second|Continued) Coming"
+    },
+    {
+      "label": "Shai-Hulud 2 runner",
+      "pattern": "(?i)SHA1HULUD"
+    },
+    {
+      "label": "Shai-Hulud 2 workflow",
+      "pattern": "(?i)\\.github/workflows/(discussion\\.yaml|formatter_\\d+\\.yml)"
+    },
+    {
+      "label": "Shai-Hulud 2 exfil file",
+      "pattern": "(?i)(cloud|contents|environment|truffleSecrets|actionsSecrets)\\.json"
+    },
+    {
+      "label": "TeamPCP C2",
+      "pattern": "(?i)(scan\\.aquasecurtiy\\.org|checkmarx\\.zone)"
+    },
+    {
+      "label": "TeamPCP archive",
+      "pattern": "(?i)tpcp\\.tar\\.gz"
+    }
+  ]
+}
