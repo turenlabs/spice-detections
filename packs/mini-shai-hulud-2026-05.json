@@ -181,6 +181,33 @@
           "pattern": "(?is)(api\\.github\\.com/user|github\\.com/search/commits).{0,400}(60000|60\\s*\\*\\s*1000|IfYouRevokeThisTokenItWillWipeTheComputerOfTheOwner)"
         }
       ]
+    },
+    {
+      "label": "PyPI import-time transformers.pyz loader",
+      "severity": "critical",
+      "minMatches": 4,
+      "signals": [
+        {
+          "label": "Python downloader",
+          "pattern": "(?i)(urllib\\.request|requests\\.|httpx\\.|urlretrieve|urlopen)"
+        },
+        {
+          "label": "transformers.pyz payload",
+          "pattern": "(?i)(git-tanstack\\.com/tmp/transformers\\.pyz|83\\.142\\.209\\.194/.{0,80}transformers\\.pyz|/tmp/transformers\\.pyz)"
+        },
+        {
+          "label": "process execution",
+          "pattern": "(?i)(subprocess\\.|os\\.system|Popen\\(|python3?\\s+/.{0,80}transformers\\.pyz)"
+        },
+        {
+          "label": "Linux import gate",
+          "pattern": "(?i)(sys\\.platform.{0,80}linux|platform\\.system\\(\\).{0,80}Linux|os\\.uname\\()"
+        },
+        {
+          "label": "Russian locale evasion",
+          "pattern": "(?i)(LANG|LC_ALL|locale|getlocale|ru_RU|Russian)"
+        }
+      ]
     }
   ]
 }
