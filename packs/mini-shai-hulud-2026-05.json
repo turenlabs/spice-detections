@@ -10,7 +10,6 @@
     "setup.mjs",
     "setup_bun.js",
     "bun_environment.js",
-    "bundle.js",
     "setup-intercom.sh",
     "composerPlugin.php",
     "package-updated.tgz",
@@ -84,7 +83,7 @@
     },
     {
       "label": "Shai-Hulud migration repo",
-      "pattern": "(?i)Shai-Hulud Migration|-migration"
+      "pattern": "(?i)Shai-Hulud Migration"
     },
     {
       "label": "Shai-Hulud webhook",
@@ -120,7 +119,7 @@
     },
     {
       "label": "Shai-Hulud 2 exfil file",
-      "pattern": "(?i)(cloud|contents|environment|truffleSecrets|actionsSecrets)\\.json"
+      "pattern": "(?i)(cloud|environment|truffleSecrets|actionsSecrets)\\.json"
     },
     {
       "label": "TeamPCP C2",
