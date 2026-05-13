@@ -154,5 +154,34 @@
       "label": "Mini Shai-Hulud generated archive",
       "pattern": "(?i)package-updated\\.tgz"
     }
+  ],
+  "compositeIocs": [
+    {
+      "label": "gh-token-monitor composite persistence wiper",
+      "severity": "critical",
+      "minMatches": 5,
+      "signals": [
+        {
+          "label": "service name",
+          "pattern": "(?i)gh-token-monitor"
+        },
+        {
+          "label": "persistence path",
+          "pattern": "(?i)(Library/LaunchAgents/com\\.user\\.gh-token-monitor\\.plist|\\.config/systemd/user/gh-token-monitor\\.service|\\.local/bin/gh-token-monitor\\.sh)"
+        },
+        {
+          "label": "commit marker",
+          "pattern": "(?i)IfYouRevokeThisTokenItWillWipeTheComputerOfTheOwner"
+        },
+        {
+          "label": "destructive command",
+          "pattern": "rm\\s+-rf\\s+~/"
+        },
+        {
+          "label": "GitHub token polling",
+          "pattern": "(?is)(api\\.github\\.com/user|github\\.com/search/commits).{0,400}(60000|60\\s*\\*\\s*1000|IfYouRevokeThisTokenItWillWipeTheComputerOfTheOwner)"
+        }
+      ]
+    }
   ]
 }
