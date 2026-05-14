@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "id": "node-ipc-2026-05",
+  "campaign": "node-ipc npm compromise May 2026",
+  "suspiciousFilenames": [
+    "node-ipc.cjs"
+  ],
+  "knownSha256": {
+    "96097e0612d9575cb133021017fb1a5c68a03b60f9f3d24ebdc0e628d9034144": "node-ipc.cjs credential stealer",
+    "449e4265979b5fdb2d3446c021af437e815debd66de7da2fe54f1ad93cbcc75e": "node-ipc 9.1.6 tarball",
+    "c2f4dc64aec4631540a568e88932b61daebbfb7e8281b812fa01b7215f9be9ea": "node-ipc 9.2.3 tarball",
+    "78a82d93b4f580835f5823b85a3d9ee1f03a15ee6f0e01b4eac86252a7002981": "node-ipc 12.0.1 tarball"
+  },
+  "knownSha1": {},
+  "iocs": [
+    {
+      "label": "node-ipc bootstrap resolver",
+      "severity": "high",
+      "pattern": "(?i)sh\\.azurestaticprovider\\.net"
+    },
+    {
+      "label": "node-ipc bootstrap resolver IP",
+      "severity": "high",
+      "pattern": "37\\.16\\.75\\.69"
+    },
+    {
+      "label": "node-ipc DNS exfiltration zone",
+      "severity": "high",
+      "pattern": "(?i)bt\\.node\\.js"
+    },
+    {
+      "label": "node-ipc payload key",
+      "severity": "critical",
+      "pattern": "qZ8pL3vNxR9wKmTyHbVcFgDsJaEoUi"
+    },
+    {
+      "label": "node-ipc hash gate",
+      "severity": "high",
+      "pattern": "bf9d8c0c3ed3ceaa831a13de27f1b1c7c7b7f01d2db4103bfdba4191940b0301"
+    }
+  ],
+  "compositeIocs": [
+    {
+      "label": "node-ipc CommonJS stealer runner",
+      "severity": "critical",
+      "minMatches": 4,
+      "signals": [
+        {
+          "label": "runner export",
+          "pattern": "__ntRun"
+        },
+        {
+          "label": "child execution marker",
+          "pattern": "__ntw"
+        },
+        {
+          "label": "detached child fork",
+          "pattern": "(?is)(child_process|require\\([\"']child_process[\"']\\)).{0,300}fork\\("
+        },
+        {
+          "label": "environment collection",
+          "pattern": "(?is)(process\\.env|envs\\.txt)"
+        },
+        {
+          "label": "host reconnaissance",
+          "pattern": "(?is)(uname\\.txt|uname\\s+-a|os\\.hostname|os\\.platform)"
+        },
+        {
+          "label": "harvested path map",
+          "pattern": "fixtures/_paths\\.txt"
+        }
+      ]
+    },
+    {
+      "label": "node-ipc DNS TXT exfiltration",
+      "severity": "critical",
+      "minMatches": 3,
+      "signals": [
+        {
+          "label": "bootstrap resolver",
+          "pattern": "(?i)sh\\.azurestaticprovider\\.net"
+        },
+        {
+          "label": "exfiltration zone",
+          "pattern": "(?i)bt\\.node\\.js"
+        },
+        {
+          "label": "TXT chunk prefixes",
+          "pattern": "(?i)\\b(xh|xd|xf)\\."
+        },
+        {
+          "label": "DNS TXT API",
+          "pattern": "(?is)(resolveTxt|Resolver\\(|dns\\.promises)"
+        },
+        {
+          "label": "payload key",
+          "pattern": "qZ8pL3vNxR9wKmTyHbVcFgDsJaEoUi"
+        }
+      ]
+    }
+  ]
+}
