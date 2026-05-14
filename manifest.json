@@ -1,12 +1,18 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-05-14T14:17:49Z",
+  "updatedAt": "2026-05-14T19:38:49Z",
   "packs": [
     {
       "id": "mini-shai-hulud-2026-05",
       "campaign": "Mini Shai-Hulud May 2026",
       "url": "packs/mini-shai-hulud-2026-05.json",
       "affectedPackagesUrl": "packs/mini-shai-hulud-2026-05-packages.csv"
+    },
+    {
+      "id": "node-ipc-2026-05",
+      "campaign": "node-ipc npm compromise May 2026",
+      "url": "packs/node-ipc-2026-05.json",
+      "affectedPackagesUrl": "packs/node-ipc-2026-05-packages.csv"
     }
   ]
 }
