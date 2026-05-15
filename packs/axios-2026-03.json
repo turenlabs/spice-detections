@@ -1,0 +1,159 @@
+{
+  "schemaVersion": 1,
+  "id": "axios-2026-03",
+  "campaign": "Axios npm compromise March 2026",
+  "suspiciousFilenames": [
+    "com.apple.act.mond",
+    "6202033.vbs",
+    "6202033.ps1",
+    "system.bat"
+  ],
+  "knownSha256": {
+    "e10b1fa84f1d6481625f741b69892780140d4e0e7769e7491e5f4d894c2e0e09": "plain-crypto-js setup.js RAT dropper",
+    "92ff08773995ebc8d55ec4b8e1a225d0d1e51efa4ef88b8849d0071230c9645a": "Axios macOS second-stage com.apple.act.mond",
+    "fcb81618bb15edfdedfb638b4c08a2af9cac9ecfa551af135a8402bf980375cf": "Axios Linux second-stage ld.py",
+    "f7d335205b8d7b20208fb3ef93ee6dc817905dc3ae0c10a0b164f4e7d07121cd": "Axios Windows system.bat loader",
+    "ed8560c1ac7ceb6983ba995124d5917dc1a00288912387a6389296637d5f815c": "Axios Windows PowerShell payload",
+    "617b67a8e1210e4fc87c92d1d1da45a2f311c08d26e89b12307cf583c900d101": "Axios Windows PowerShell payload"
+  },
+  "knownSha1": {
+    "2553649f2322049666871cea80a5d0d6adc700ca": "axios 1.14.1 malicious npm tarball",
+    "d6f3f62fd3b9f5432f5782b62d8cfd5247d5ee71": "axios 0.30.4 malicious npm tarball",
+    "07d889e2dadce6f3910dcbc253317d28ca61c766": "plain-crypto-js 4.2.1 malicious npm tarball"
+  },
+  "iocs": [
+    {
+      "label": "Axios C2 domain",
+      "severity": "critical",
+      "pattern": "(?i)sfrclak\\.com"
+    },
+    {
+      "label": "Axios secondary C2 domain",
+      "severity": "high",
+      "pattern": "(?i)callnrwise\\.com"
+    },
+    {
+      "label": "Axios C2 IP",
+      "severity": "critical",
+      "pattern": "142\\.11\\.206\\.73"
+    },
+    {
+      "label": "Axios C2 URL",
+      "severity": "critical",
+      "pattern": "(?i)(http|hxxp)://sfrclak\\[?\\.?\\]?com:8000/6202033|sfrclak\\.com:8000/6202033"
+    },
+    {
+      "label": "Axios macOS POST body",
+      "severity": "high",
+      "pattern": "packages\\.npm\\.org/product0"
+    },
+    {
+      "label": "Axios Windows POST body",
+      "severity": "high",
+      "pattern": "packages\\.npm\\.org/product1"
+    },
+    {
+      "label": "Axios Linux POST body",
+      "severity": "high",
+      "pattern": "packages\\.npm\\.org/product2"
+    },
+    {
+      "label": "Axios macOS RAT path",
+      "severity": "critical",
+      "pattern": "(?i)/Library/Caches/com\\.apple\\.act\\.mond"
+    },
+    {
+      "label": "Axios Linux RAT path",
+      "severity": "critical",
+      "pattern": "(?i)/tmp/ld\\.py"
+    },
+    {
+      "label": "Axios Windows persistence path",
+      "severity": "critical",
+      "pattern": "(?i)(%PROGRAMDATA%|C:\\\\ProgramData)\\\\(wt\\.exe|system\\.bat)"
+    }
+  ],
+  "compositeIocs": [
+    {
+      "label": "Axios malicious dependency injection",
+      "severity": "critical",
+      "minMatches": 3,
+      "signals": [
+        {
+          "label": "axios package",
+          "pattern": "(?i)\"axios\""
+        },
+        {
+          "label": "affected axios version",
+          "pattern": "(?i)(\"version\"\\s*:\\s*\"(1\\.14\\.1|0\\.30\\.4)\"|\"axios\"\\s*:\\s*\"[^\"]*(1\\.14\\.1|0\\.30\\.4))"
+        },
+        {
+          "label": "phantom dependency",
+          "pattern": "(?i)\"plain-crypto-js\"\\s*:\\s*\"[^\"]*4\\.2\\.1"
+        },
+        {
+          "label": "normal axios dependency set",
+          "pattern": "(?is)\"follow-redirects\".{0,400}\"form-data\".{0,400}\"proxy-from-env\""
+        }
+      ]
+    },
+    {
+      "label": "Axios plain-crypto-js postinstall dropper",
+      "severity": "critical",
+      "minMatches": 4,
+      "signals": [
+        {
+          "label": "plain-crypto-js package",
+          "pattern": "(?i)plain-crypto-js"
+        },
+        {
+          "label": "malicious version",
+          "pattern": "(?i)4\\.2\\.1"
+        },
+        {
+          "label": "postinstall setup hook",
+          "pattern": "(?i)\"postinstall\"\\s*:\\s*\"node\\s+setup\\.js\""
+        },
+        {
+          "label": "clean manifest stub",
+          "pattern": "(?i)package\\.md"
+        },
+        {
+          "label": "self cleanup",
+          "pattern": "(?is)(unlink|rm|delete).{0,200}setup\\.js"
+        }
+      ]
+    },
+    {
+      "label": "Axios cross-platform RAT downloader",
+      "severity": "critical",
+      "minMatches": 4,
+      "signals": [
+        {
+          "label": "C2 endpoint",
+          "pattern": "(?i)(sfrclak\\.com:8000/6202033|142\\.11\\.206\\.73)"
+        },
+        {
+          "label": "platform selector",
+          "pattern": "packages\\.npm\\.org/product[0-2]"
+        },
+        {
+          "label": "download command",
+          "pattern": "(?is)(curl|Invoke-WebRequest|osascript|cscript|nohup)"
+        },
+        {
+          "label": "macOS payload",
+          "pattern": "(?i)com\\.apple\\.act\\.mond"
+        },
+        {
+          "label": "Windows payload",
+          "pattern": "(?i)(6202033\\.(vbs|ps1)|wt\\.exe|system\\.bat)"
+        },
+        {
+          "label": "Linux payload",
+          "pattern": "(?i)/tmp/ld\\.py"
+        }
+      ]
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-05-15T14:34:06Z",
+  "updatedAt": "2026-05-15T14:54:29Z",
   "packs": [
     {
       "id": "mini-shai-hulud-2026-05",
@@ -13,6 +13,12 @@
       "campaign": "node-ipc npm compromise May 2026",
       "url": "packs/node-ipc-2026-05.json",
       "affectedPackagesUrl": "packs/node-ipc-2026-05-packages.csv"
+    },
+    {
+      "id": "axios-2026-03",
+      "campaign": "Axios npm compromise March 2026",
+      "url": "packs/axios-2026-03.json",
+      "affectedPackagesUrl": "packs/axios-2026-03-packages.csv"
     }
   ]
 }
