@@ -77,7 +77,7 @@
     {
       "label": "Axios malicious dependency injection",
       "severity": "critical",
-      "minMatches": 3,
+      "minMatches": 4,
       "signals": [
         {
           "label": "axios package",
