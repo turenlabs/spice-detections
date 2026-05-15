@@ -185,7 +185,7 @@
     {
       "label": "PyPI import-time transformers.pyz loader",
       "severity": "critical",
-      "minMatches": 4,
+      "minMatches": 5,
       "signals": [
         {
           "label": "Python downloader",
