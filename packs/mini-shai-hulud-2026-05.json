@@ -152,6 +152,31 @@
     {
       "label": "Mini Shai-Hulud generated archive",
       "pattern": "(?i)package-updated\\.tgz"
+    },
+    {
+      "label": "AntV Mini Shai-Hulud C2 domain",
+      "severity": "critical",
+      "pattern": "(?i)t\\.m-kosche\\.com"
+    },
+    {
+      "label": "AntV Mini Shai-Hulud OTEL traces endpoint",
+      "severity": "critical",
+      "pattern": "(?i)t\\.m-kosche\\.com:443/api/public/otel/v1/traces"
+    },
+    {
+      "label": "AntV setup git dependency",
+      "severity": "critical",
+      "pattern": "(?i)(@antv/setup.{0,180}github:antvis/(G2|setup)#1916faa365f2788b6e193514872d51a242876569|github:antvis/(G2|setup)#1916faa365f2788b6e193514872d51a242876569)"
+    },
+    {
+      "label": "AntV decryptor marker",
+      "severity": "high",
+      "pattern": "(?i)fc2edea72"
+    },
+    {
+      "label": "AntV reversed Shai-Hulud repo marker",
+      "severity": "high",
+      "pattern": "(?i)(niagA oG eW ereH :duluH-iahS|niaga og ew ereh :duluh-iahs)"
     }
   ],
   "compositeIocs": [
@@ -206,6 +231,68 @@
         {
           "label": "Russian locale evasion",
           "pattern": "(?i)(LANG|LC_ALL|locale|getlocale|ru_RU|Russian)"
+        }
+      ]
+    },
+    {
+      "label": "AntV Mini Shai-Hulud bun preinstall loader",
+      "severity": "critical",
+      "minMatches": 4,
+      "signals": [
+        {
+          "label": "bun preinstall hook",
+          "pattern": "(?i)\"preinstall\"\\s*:\\s*\"bun\\s+run\\s+index\\.js\""
+        },
+        {
+          "label": "AntV setup git dependency",
+          "pattern": "(?i)(\"@antv/setup\"\\s*:\\s*\"github:antvis/(G2|setup)#1916faa365f2788b6e193514872d51a242876569\"|github:antvis/(G2|setup)#1916faa365f2788b6e193514872d51a242876569)"
+        },
+        {
+          "label": "AntV C2",
+          "pattern": "(?i)t\\.m-kosche\\.com"
+        },
+        {
+          "label": "OTEL traces exfil path",
+          "pattern": "(?i)/api/public/otel/v1/traces"
+        },
+        {
+          "label": "decryptor marker",
+          "pattern": "(?i)fc2edea72"
+        },
+        {
+          "label": "developer secret targets",
+          "pattern": "(?is)(GITHUB_TOKEN|ACTIONS_ID_TOKEN_REQUEST_TOKEN|AWS_ACCESS_KEY_ID|AWS_SECRET_ACCESS_KEY|KUBECONFIG|KUBERNETES_SERVICE_HOST|VAULT_TOKEN|VAULT_AUTH_TOKEN)"
+        },
+        {
+          "label": "Sigstore endpoints in payload",
+          "pattern": "(?i)(fulcio\\.sigstore\\.dev/api/v2/signingCert|rekor\\.sigstore\\.dev/api/v1/log/entries)"
+        }
+      ]
+    },
+    {
+      "label": "AntV Mini Shai-Hulud GitHub dead drop",
+      "severity": "high",
+      "minMatches": 3,
+      "signals": [
+        {
+          "label": "reversed repo marker",
+          "pattern": "(?i)(niagA oG eW ereH :duluH-iahS|niaga og ew ereh :duluh-iahs)"
+        },
+        {
+          "label": "normal repo marker",
+          "pattern": "(?i)Shai-Hulud: Here We Go Again"
+        },
+        {
+          "label": "results dead drop path",
+          "pattern": "(?i)results/results-[^\\s\"']+\\.json"
+        },
+        {
+          "label": "Dune repository name",
+          "pattern": "(?i)\\b(sayyadina|atreides|harkonnen|fremen|kanly)-(stillsuit|ornithopter|phibian|fedaykin|lasgun)-\\d{2,}\\b"
+        },
+        {
+          "label": "GitHub API repository write",
+          "pattern": "(?is)api\\.github\\.com/(user/repos|repos/.{1,180}/contents/results/)"
         }
       ]
     }
