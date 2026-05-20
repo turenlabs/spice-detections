@@ -18,6 +18,10 @@
     "managed.pyz",
     ".sys-update-check",
     ".sys-update-check-k8s",
+    "pgsql-monitor.service",
+    "pgmonitor.py",
+    "kitty-monitor.service",
+    "cat.py",
     "gh-token-monitor.service",
     "gh-token-monitor.sh",
     "com.user.gh-token-monitor.plist"
@@ -36,7 +40,8 @@
     "069ac1dc7f7649b76bc72a11ac700f373804bfd81dab7e561157b703999f44ce": "durabletask rope.pyz",
     "7d80b3ef74ad7992b93c31966962612e4e2ceb93e7727cdbd1d2a9af47d44ba8": "durabletask 1.4.1 wheel",
     "aeaf583e20347bf850e2fabdcd6f4982996ba023f8c2cd56bbd299cfd56516f5": "durabletask 1.4.2 wheel",
-    "877ff2531a63393c4cb9c3c86908b62d9c4fc3db971bc231c48537faae6cb3ec": "durabletask 1.4.3 wheel"
+    "877ff2531a63393c4cb9c3c86908b62d9c4fc3db971bc231c48537faae6cb3ec": "durabletask 1.4.3 wheel",
+    "7c24b4d9a8f448832f3752d7f67dcdbf1b7f0f41e10bf633efa175e627144e8b": "@cap-js/openapi variant index.js"
   },
   "knownSha1": {
     "e7d582b98ca80690883175470e96f703ef6dc497": "router_init.js",
@@ -194,7 +199,7 @@
     {
       "label": "DurableTask TeamPCP rope.pyz payload URL",
       "severity": "critical",
-      "pattern": "(?i)https://(check\\.git-service\\.com|t\\.m-kosche\\.com)/rope\\.pyz"
+      "pattern": "(?i)https://(check\\.git-service\\.com|t\\.m-kosche\\.com)/(rope|managed)\\.pyz"
     },
     {
       "label": "DurableTask TeamPCP downloaded payload path",
@@ -210,6 +215,46 @@
       "label": "DurableTask TeamPCP SSM state",
       "severity": "high",
       "pattern": "(?i)/tmp/\\.rope_state/ssm_instances\\.json"
+    },
+    {
+      "label": "DurableTask TeamPCP PyPI exfil endpoint",
+      "severity": "critical",
+      "pattern": "(?i)check\\.git-service\\.com/(api/public/version|v1/models|audio\\.mp3)"
+    },
+    {
+      "label": "DurableTask TeamPCP PyPI persistence",
+      "severity": "critical",
+      "pattern": "(?i)(pgsql-monitor\\.service|\\.config/systemd/user/pgsql-monitor\\.service|/etc/systemd/system/pgsql-monitor\\.service|\\.local/bin/pgmonitor\\.py|/usr/bin/pgmonitor\\.py)"
+    },
+    {
+      "label": "DurableTask TeamPCP PyPI GitHub fallback C2",
+      "severity": "high",
+      "pattern": "(?i)(api\\.github\\.com/search/commits\\?q=FIRESCALE|PUSH UR T3MPRR|\\bFIRESCALE\\b)"
+    },
+    {
+      "label": "May 19 kitty-monitor C2 persistence",
+      "severity": "critical",
+      "pattern": "(?i)(kitty-monitor\\.service|com\\.user\\.kitty-monitor\\.plist|\\.local/share/kitty/cat\\.py|/var/tmp/\\.gh_update_state|api\\.github\\.com/search/commits\\?q=firedalazer|\\bfiredalazer\\b)"
+    },
+    {
+      "label": "May 19 token invalidation threat string",
+      "severity": "critical",
+      "pattern": "(?i)IfYouInvalidateThisTokenItWillNukeTheComputerOfTheOwner"
+    },
+    {
+      "label": "@cap-js/openapi optional dependency variant",
+      "severity": "critical",
+      "pattern": "(?i)(@sap/setup.{0,180}github:cap-js/openapi#d78c25443ec4a0d7f0a85776461f3b1163132537|github:cap-js/openapi#d78c25443ec4a0d7f0a85776461f3b1163132537)"
+    },
+    {
+      "label": "@cap-js/openapi kitty-monitor keywords",
+      "severity": "high",
+      "pattern": "(?i)(thebeautifulsnadsoftime|thebeautifulmarchoftime)"
+    },
+    {
+      "label": "May 19 AI-tool persistence path",
+      "severity": "high",
+      "pattern": "(?i)(\\.claude/package/index\\.js|\\.codex/package/index\\.js|\\.claude/settings\\.json.{0,120}SessionStart|\\.vscode/tasks\\.json.{0,120}folderOpen|\\.claude/setup\\.mjs|\\.vscode/setup\\.mjs)"
     }
   ],
   "compositeIocs": [
@@ -340,7 +385,7 @@
         },
         {
           "label": "rope.pyz payload",
-          "pattern": "(?i)(check\\.git-service\\.com/rope\\.pyz|t\\.m-kosche\\.com/rope\\.pyz|/tmp/rope-[^\\s\"']+\\.pyz|/tmp/managed\\.pyz)"
+          "pattern": "(?i)(check\\.git-service\\.com/(rope|managed)\\.pyz|t\\.m-kosche\\.com/rope\\.pyz|/tmp/rope-[^\\s\"']+\\.pyz|/tmp/managed\\.pyz)"
         },
         {
           "label": "process execution",
@@ -379,15 +424,85 @@
         },
         {
           "label": "TeamPCP endpoint",
-          "pattern": "(?i)(/v1/models|/audio\\.mp3|/api/public/version)"
+          "pattern": "(?i)(/v1/models|/audio\\.mp3|/api/public/version|PUSH UR T3MPRR|\\bFIRESCALE\\b)"
         },
         {
           "label": "propagation state",
-          "pattern": "(?i)(/tmp/\\.rope_state/ssm_instances\\.json|SSM:SendCommand|SSM:DescribeInstanceInformation|kubectl\\s+exec)"
+          "pattern": "(?i)(/tmp/\\.rope_state/ssm_instances\\.json|AWS-RunShellScript|SSM:SendCommand|SSM:DescribeInstanceInformation|DescribeInstanceInformation|SendCommand|kubectl\\s+exec)"
+        },
+        {
+          "label": "PyPI persistence",
+          "pattern": "(?i)(pgsql-monitor\\.service|pgmonitor\\.py)"
+        },
+        {
+          "label": "geotargeting markers",
+          "pattern": "(?i)(he_IL|fa_IR|Jerusalem|Tel_Aviv|Tehran)"
         },
         {
           "label": "password manager targeting",
           "pattern": "(?i)(Bitwarden|1Password|\\bbwm?\\b|\\bop\\b|pass/gopass|gpg)"
+        }
+      ]
+    },
+    {
+      "label": "May 19 kitty-monitor GitHub commit-search C2",
+      "severity": "critical",
+      "minMatches": 3,
+      "signals": [
+        {
+          "label": "kitty monitor service",
+          "pattern": "(?i)(kitty-monitor\\.service|com\\.user\\.kitty-monitor\\.plist)"
+        },
+        {
+          "label": "kitty monitor payload",
+          "pattern": "(?i)(\\.local/share/kitty/cat\\.py|/var/tmp/\\.gh_update_state)"
+        },
+        {
+          "label": "GitHub commit search",
+          "pattern": "(?i)api\\.github\\.com/search/commits"
+        },
+        {
+          "label": "main wave keyword",
+          "pattern": "(?i)\\bfiredalazer\\b"
+        },
+        {
+          "label": "cap-js variant keywords",
+          "pattern": "(?i)(thebeautifulsnadsoftime|thebeautifulmarchoftime)"
+        },
+        {
+          "label": "python execution",
+          "pattern": "(?i)(python3?\\s+.{0,120}cat\\.py|subprocess\\.|Popen\\()"
+        }
+      ]
+    },
+    {
+      "label": "@cap-js/openapi optional-dependency payload",
+      "severity": "critical",
+      "minMatches": 3,
+      "signals": [
+        {
+          "label": "affected package",
+          "pattern": "(?i)@cap-js/openapi"
+        },
+        {
+          "label": "optional dependency name",
+          "pattern": "(?i)@sap/setup"
+        },
+        {
+          "label": "attacker fork commit",
+          "pattern": "(?i)github:cap-js/openapi#d78c25443ec4a0d7f0a85776461f3b1163132537"
+        },
+        {
+          "label": "TeamPCP C2",
+          "pattern": "(?i)t\\.m-kosche\\.com"
+        },
+        {
+          "label": "variant kitty keywords",
+          "pattern": "(?i)(thebeautifulsnadsoftime|thebeautifulmarchoftime)"
+        },
+        {
+          "label": "payload hash",
+          "pattern": "(?i)7c24b4d9a8f448832f3752d7f67dcdbf1b7f0f41e10bf633efa175e627144e8b"
         }
       ]
     }
