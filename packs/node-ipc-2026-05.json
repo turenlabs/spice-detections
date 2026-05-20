@@ -2,9 +2,7 @@
   "schemaVersion": 1,
   "id": "node-ipc-2026-05",
   "campaign": "node-ipc npm compromise May 2026",
-  "suspiciousFilenames": [
-    "node-ipc.cjs"
-  ],
+  "suspiciousFilenames": [],
   "knownSha256": {
     "96097e0612d9575cb133021017fb1a5c68a03b60f9f3d24ebdc0e628d9034144": "node-ipc.cjs credential stealer",
     "449e4265979b5fdb2d3446c021af437e815debd66de7da2fe54f1ad93cbcc75e": "node-ipc 9.1.6 tarball",
@@ -59,7 +57,7 @@
         },
         {
           "label": "environment collection",
-          "pattern": "(?is)(process\\.env|envs\\.txt)"
+          "pattern": "(?is)(process\\.env|envs\\.txt|__ntw\\s*=\\s*1)"
         },
         {
           "label": "host reconnaissance",
@@ -68,6 +66,10 @@
         {
           "label": "harvested path map",
           "pattern": "fixtures/_paths\\.txt"
+        },
+        {
+          "label": "temporary archive path",
+          "pattern": "(?is)nt-\\$?\\{?pid\\}?|nt-\\d+|\\.tar\\.gz"
         }
       ]
     },
