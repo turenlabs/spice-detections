@@ -14,6 +14,10 @@
     "composerPlugin.php",
     "package-updated.tgz",
     "transformers.pyz",
+    "rope.pyz",
+    "managed.pyz",
+    ".sys-update-check",
+    ".sys-update-check-k8s",
     "gh-token-monitor.service",
     "gh-token-monitor.sh",
     "com.user.gh-token-monitor.plist"
@@ -28,7 +32,11 @@
     "907aec5b1288057a3e0885226918b6930a62a0f348ce23de026a683238c7903e": "intercom/intercom-php composer.json",
     "50212a875643520353df158196b9b3be4595094125ad8d2d2c48bdd9cb04ce1f": "intercom/intercom-php router_runtime.js",
     "832a976d1a8d54e296e8479aedbd89fa24baa02b8409a78bf06d4d03340881bd": "intercom/intercom-php setup-intercom.sh",
-    "b084743bd16043461e68b604dde80a8b386b405eae6f66c1103fb4fd6831d4a7": "intercom/intercom-php composerPlugin.php"
+    "b084743bd16043461e68b604dde80a8b386b405eae6f66c1103fb4fd6831d4a7": "intercom/intercom-php composerPlugin.php",
+    "069ac1dc7f7649b76bc72a11ac700f373804bfd81dab7e561157b703999f44ce": "durabletask rope.pyz",
+    "7d80b3ef74ad7992b93c31966962612e4e2ceb93e7727cdbd1d2a9af47d44ba8": "durabletask 1.4.1 wheel",
+    "aeaf583e20347bf850e2fabdcd6f4982996ba023f8c2cd56bbd299cfd56516f5": "durabletask 1.4.2 wheel",
+    "877ff2531a63393c4cb9c3c86908b62d9c4fc3db971bc231c48537faae6cb3ec": "durabletask 1.4.3 wheel"
   },
   "knownSha1": {
     "e7d582b98ca80690883175470e96f703ef6dc497": "router_init.js",
@@ -177,6 +185,31 @@
       "label": "AntV reversed Shai-Hulud repo marker",
       "severity": "high",
       "pattern": "(?i)(niagA oG eW ereH :duluH-iahS|niaga og ew ereh :duluh-iahs)"
+    },
+    {
+      "label": "DurableTask TeamPCP C2 domain",
+      "severity": "critical",
+      "pattern": "(?i)check\\.git-service\\.com"
+    },
+    {
+      "label": "DurableTask TeamPCP rope.pyz payload URL",
+      "severity": "critical",
+      "pattern": "(?i)https://(check\\.git-service\\.com|t\\.m-kosche\\.com)/rope\\.pyz"
+    },
+    {
+      "label": "DurableTask TeamPCP downloaded payload path",
+      "severity": "critical",
+      "pattern": "(?i)(/tmp/managed\\.pyz|/tmp/rope-[^\\s\"']+\\.pyz)"
+    },
+    {
+      "label": "DurableTask TeamPCP infection marker",
+      "severity": "critical",
+      "pattern": "(?i)\\.cache/\\.sys-update-check(-k8s)?"
+    },
+    {
+      "label": "DurableTask TeamPCP SSM state",
+      "severity": "high",
+      "pattern": "(?i)/tmp/\\.rope_state/ssm_instances\\.json"
     }
   ],
   "compositeIocs": [
@@ -293,6 +326,68 @@
         {
           "label": "GitHub API repository write",
           "pattern": "(?is)api\\.github\\.com/(user/repos|repos/.{1,180}/contents/results/)"
+        }
+      ]
+    },
+    {
+      "label": "DurableTask TeamPCP PyPI rope.pyz loader",
+      "severity": "critical",
+      "minMatches": 4,
+      "signals": [
+        {
+          "label": "Python downloader",
+          "pattern": "(?i)(urllib\\.request|requests\\.|httpx\\.|urlretrieve|urlopen)"
+        },
+        {
+          "label": "rope.pyz payload",
+          "pattern": "(?i)(check\\.git-service\\.com/rope\\.pyz|t\\.m-kosche\\.com/rope\\.pyz|/tmp/rope-[^\\s\"']+\\.pyz|/tmp/managed\\.pyz)"
+        },
+        {
+          "label": "process execution",
+          "pattern": "(?i)(subprocess\\.|os\\.system|Popen\\(|python3?\\s+/.{0,120}(managed|rope-[^\\s\"']+)\\.pyz)"
+        },
+        {
+          "label": "Linux execution gate",
+          "pattern": "(?i)(sys\\.platform.{0,80}linux|platform\\.system\\(\\).{0,80}Linux|os\\.uname\\()"
+        },
+        {
+          "label": "durabletask injection context",
+          "pattern": "(?i)(durabletask|task\\.py|entities/__init__\\.py|extensions/__init__\\.py|payload/__init__\\.py)"
+        },
+        {
+          "label": "credential and propagation targets",
+          "pattern": "(?is)(AWS_ACCESS_KEY_ID|AWS_SECRET_ACCESS_KEY|KUBERNETES_SERVICE_HOST|KUBECONFIG|VAULT_TOKEN|AZURE_|GOOGLE_APPLICATION_CREDENTIALS|SSM|SendCommand|kubectl\\s+exec)"
+        }
+      ]
+    },
+    {
+      "label": "DurableTask TeamPCP runtime infection evidence",
+      "severity": "critical",
+      "minMatches": 3,
+      "signals": [
+        {
+          "label": "infection marker",
+          "pattern": "(?i)\\.cache/\\.sys-update-check(-k8s)?"
+        },
+        {
+          "label": "runtime payload",
+          "pattern": "(?i)(/tmp/managed\\.pyz|/tmp/rope-[^\\s\"']+\\.pyz)"
+        },
+        {
+          "label": "TeamPCP C2",
+          "pattern": "(?i)(check\\.git-service\\.com|t\\.m-kosche\\.com|83\\.142\\.209\\.194)"
+        },
+        {
+          "label": "TeamPCP endpoint",
+          "pattern": "(?i)(/v1/models|/audio\\.mp3|/api/public/version)"
+        },
+        {
+          "label": "propagation state",
+          "pattern": "(?i)(/tmp/\\.rope_state/ssm_instances\\.json|SSM:SendCommand|SSM:DescribeInstanceInformation|kubectl\\s+exec)"
+        },
+        {
+          "label": "password manager targeting",
+          "pattern": "(?i)(Bitwarden|1Password|\\bbwm?\\b|\\bop\\b|pass/gopass|gpg)"
         }
       ]
     }

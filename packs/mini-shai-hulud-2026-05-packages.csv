@@ -1020,6 +1020,7 @@ docusaurus-plugin-vanilla-extract,= 1.0.3,npm
 dont-go,= 1.1.2,npm
 dotnet-template,= 0.0.3 || = 0.0.4,npm
 drop-events-on-property-plugin,= 0.0.2,npm
+durabletask,= 1.4.1 || = 1.4.2 || = 1.4.3,pypi
 easypanel-sdk,= 0.3.2,npm
 electron-volt,= 0.0.2,npm
 email-deliverability-tester,= 1.1.1,npm
