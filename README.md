@@ -2,7 +2,7 @@
 
 Community-maintained detection packs for Spice.
 
-Spice fetches `manifest.json` before each scan and falls back to its embedded detections if this repository is unavailable or malformed.
+Spice fetches `manifest.json` before each scan and falls back to its locally cached detection bundle if this repository is unavailable.
 
 ## Layout
 
