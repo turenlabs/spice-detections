@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "id": "axios-rat-2026-03",
+  "campaign": "Axios npm RAT compromise March 2026",
+  "suspiciousFilenames": [
+    "setup.js",
+    "package.md",
+    "com.apple.act.mond",
+    "ld.py",
+    "wt.exe"
+  ],
+  "knownSha256": {},
+  "knownSha1": {},
+  "iocs": [
+    {
+      "label": "Axios RAT C2 domain",
+      "severity": "critical",
+      "pattern": "(?i)sfrclak\\.com"
+    },
+    {
+      "label": "Axios RAT C2 IP",
+      "severity": "critical",
+      "pattern": "142\\.11\\.206\\.73"
+    },
+    {
+      "label": "plain-crypto-js postinstall hook",
+      "severity": "critical",
+      "pattern": "(?i)\"postinstall\"\\s*:\\s*\"node setup\\.js\""
+    },
+    {
+      "label": "Axios RAT XOR key",
+      "severity": "high",
+      "pattern": "OrDeR_7077"
+    },
+    {
+      "label": "macOS dropped RAT path",
+      "severity": "critical",
+      "pattern": "(?i)/Library/Caches/com\\.apple\\.act\\.mond"
+    },
+    {
+      "label": "Linux dropped RAT path",
+      "severity": "critical",
+      "pattern": "(?i)/tmp/ld\\.py"
+    },
+    {
+      "label": "Windows PowerShell masquerade path",
+      "severity": "critical",
+      "pattern": "(?i)(%PROGRAMDATA%|ProgramData)\\\\+wt\\.exe"
+    }
+  ],
+  "compositeIocs": [
+    {
+      "label": "Axios plain-crypto-js postinstall RAT dropper",
+      "severity": "critical",
+      "minMatches": 4,
+      "signals": [
+        {
+          "label": "malicious dependency name",
+          "pattern": "(?i)plain-crypto-js"
+        },
+        {
+          "label": "postinstall setup script",
+          "pattern": "(?i)(\"postinstall\"\\s*:\\s*\"node setup\\.js\"|setup\\.js)"
+        },
+        {
+          "label": "double-obfuscation key",
+          "pattern": "OrDeR_7077"
+        },
+        {
+          "label": "C2 infrastructure",
+          "pattern": "(?i)(sfrclak\\.com|142\\.11\\.206\\.73)"
+        },
+        {
+          "label": "self-erasing package replacement",
+          "pattern": "(?is)(package\\.md.{0,300}package\\.json|unlinkSync\\(.{0,120}setup\\.js|renameSync\\(.{0,120}package\\.md)"
+        },
+        {
+          "label": "platform-specific payload launch",
+          "pattern": "(?is)(com\\.apple\\.act\\.mond|/tmp/ld\\.py|wt\\.exe|nohup\\s+python3|osascript|ExecutionPolicy\\s+Bypass)"
+        }
+      ]
+    }
+  ]
+}

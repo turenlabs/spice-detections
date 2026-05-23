@@ -1,0 +1,126 @@
+{
+  "schemaVersion": 1,
+  "id": "laravel-lang-2026-05",
+  "campaign": "Laravel Lang Composer compromise May 2026",
+  "suspiciousFilenames": [
+    "DebugChromium.exe"
+  ],
+  "knownSha256": {},
+  "knownSha1": {},
+  "iocs": [
+    {
+      "label": "Laravel Lang C2 domain",
+      "severity": "critical",
+      "pattern": "(?i)flipboxstudio\\.info"
+    },
+    {
+      "label": "Laravel Lang payload URL",
+      "severity": "critical",
+      "pattern": "(?i)https://flipboxstudio\\.info/payload"
+    },
+    {
+      "label": "Laravel Lang exfiltration URL",
+      "severity": "critical",
+      "pattern": "(?i)https://flipboxstudio\\.info/exfil"
+    },
+    {
+      "label": "Laravel Lang staging directory",
+      "severity": "critical",
+      "pattern": "(?i)\\.laravel_locale"
+    },
+    {
+      "label": "Laravel Lang stealer XOR key",
+      "severity": "critical",
+      "pattern": "k9X2mP7vL4nQ8wR1"
+    },
+    {
+      "label": "Laravel Lang browser decryptor artifact",
+      "severity": "critical",
+      "pattern": "(?i)DebugChromium\\.exe"
+    }
+  ],
+  "compositeIocs": [
+    {
+      "label": "Laravel Lang autoloaded PHP backdoor",
+      "severity": "critical",
+      "minMatches": 4,
+      "signals": [
+        {
+          "label": "Composer autoload files entry",
+          "pattern": "(?is)autoload.{0,200}files"
+        },
+        {
+          "label": "autoloaded helpers file",
+          "pattern": "(?i)src/helpers\\.php"
+        },
+        {
+          "label": "C2 domain or URL",
+          "pattern": "(?i)flipboxstudio\\.info(/payload)?"
+        },
+        {
+          "label": "hidden Laravel locale staging path",
+          "pattern": "(?i)(sys_get_temp_dir\\s*\\(\\s*\\).{0,120}\\.laravel_locale|\\.laravel_locale)"
+        },
+        {
+          "label": "TLS verification disabled",
+          "pattern": "(?is)(CURLOPT_SSL_VERIFYPEER|CURLOPT_SSL_VERIFYHOST|verify_peer|verify_peer_name).{0,120}(false|0)"
+        },
+        {
+          "label": "PHP background execution",
+          "pattern": "(?is)(exec|shell_exec|proc_open|popen)\\s*\\(.{0,160}\\bphp\\b"
+        },
+        {
+          "label": "Windows VBS execution",
+          "pattern": "(?is)(cscript|\\.vbs)"
+        },
+        {
+          "label": "character-code C2 construction",
+          "pattern": "(?is)array_map\\s*\\(.{0,120}chr"
+        }
+      ]
+    },
+    {
+      "label": "Laravel Lang second-stage PHP stealer",
+      "severity": "critical",
+      "minMatches": 5,
+      "signals": [
+        {
+          "label": "exfiltration endpoint",
+          "pattern": "(?i)flipboxstudio\\.info/exfil"
+        },
+        {
+          "label": "hardcoded XOR key",
+          "pattern": "k9X2mP7vL4nQ8wR1"
+        },
+        {
+          "label": "stealer orchestration",
+          "pattern": "(?is)class\\s+Stealer\\b"
+        },
+        {
+          "label": "cloud and AWS collectors",
+          "pattern": "(?is)(AwsCollector|CloudCollector|169\\.254\\.169\\.254)"
+        },
+        {
+          "label": "Kubernetes or Vault collectors",
+          "pattern": "(?is)(K8sCollector|VaultCollector|/var/run/secrets)"
+        },
+        {
+          "label": "CI/CD collector",
+          "pattern": "(?is)CiCdCollector|credentials\\.xml|master\\.key"
+        },
+        {
+          "label": "process environment scraping",
+          "pattern": "(?is)/proc/[^\\s\"']+/(environ|cmdline)"
+        },
+        {
+          "label": "browser decryptor artifact",
+          "pattern": "(?i)DebugChromium\\.exe"
+        },
+        {
+          "label": "password manager collection",
+          "pattern": "(?is)(PasswordManagerCollector|1Password|Bitwarden|LastPass|KeePass)"
+        }
+      ]
+    }
+  ]
+}

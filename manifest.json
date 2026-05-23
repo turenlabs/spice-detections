@@ -1,7 +1,13 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-05-20T18:20:04Z",
+  "updatedAt": "2026-05-23T15:30:00Z",
   "packs": [
+    {
+      "id": "laravel-lang-2026-05",
+      "campaign": "Laravel Lang Composer compromise May 2026",
+      "url": "packs/laravel-lang-2026-05.json",
+      "affectedPackagesUrl": "packs/laravel-lang-2026-05-packages.csv"
+    },
     {
       "id": "mini-shai-hulud-2026-05",
       "campaign": "Mini Shai-Hulud May 2026",
@@ -13,6 +19,12 @@
       "campaign": "node-ipc npm compromise May 2026",
       "url": "packs/node-ipc-2026-05.json",
       "affectedPackagesUrl": "packs/node-ipc-2026-05-packages.csv"
+    },
+    {
+      "id": "axios-rat-2026-03",
+      "campaign": "Axios npm RAT compromise March 2026",
+      "url": "packs/axios-rat-2026-03.json",
+      "affectedPackagesUrl": "packs/axios-rat-2026-03-packages.csv"
     },
     {
       "id": "axios-2026-03",
