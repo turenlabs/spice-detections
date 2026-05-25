@@ -1,0 +1,162 @@
+{
+  "schemaVersion": 1,
+  "id": "trapdoor-2026-05",
+  "campaign": "TrapDoor crypto stealer May 2026",
+  "suspiciousFilenames": [
+    "trap-core.js"
+  ],
+  "knownSha256": {},
+  "knownSha1": {},
+  "iocs": [
+    {
+      "label": "TrapDoor GitHub Pages C2 host",
+      "severity": "high",
+      "pattern": "(?i)ddjidd564\\.github\\.io"
+    },
+    {
+      "label": "TrapDoor config beacon URL",
+      "severity": "critical",
+      "pattern": "(?i)ddjidd564\\.github\\.io/defi-security-best-practices/config\\.json"
+    },
+    {
+      "label": "TrapDoor shared payload filename",
+      "severity": "high",
+      "pattern": "(?i)trap-core\\.js"
+    },
+    {
+      "label": "TrapDoor crates build.rs XOR key",
+      "severity": "high",
+      "pattern": "(?i)cargo-build-helper-2026"
+    },
+    {
+      "label": "TrapDoor campaign marker",
+      "severity": "high",
+      "pattern": "(?i)\\bP-2024-001\\b"
+    },
+    {
+      "label": "TrapDoor vector activation flag",
+      "severity": "high",
+      "pattern": "(?i)\\btrapActivation\\b"
+    },
+    {
+      "label": "TrapDoor framework banner",
+      "severity": "high",
+      "pattern": "(?i)Universal AI Agent Extraction Framework"
+    },
+    {
+      "label": "TrapDoor malicious package referenced as dependency",
+      "severity": "high",
+      "pattern": "(?im)(^|[\\s\"'/])(async-pipeline-builder|build-scripts-utils|chain-key-validator|crypto-credential-scanner|defi-env-auditor|defi-threat-scanner|deployment-key-auditor|dev-env-bootstrapper|eth-wallet-sentinel|llm-context-compressor|mnemonic-safety-check|model-switch-router|node-setup-helpers|project-init-tools|prompt-engineering-toolkit|solidity-deploy-guard|token-usage-tracker|wallet-backup-verifier|wallet-security-checker|web3-secrets-detector|workspace-config-loader|cryptowallet-safety|data-pipeline-check|defi-risk-scanner|env-loader-cli|eth-security-auditor|git-config-sync|solidity-build-guard|move-analyzer-build|move-compiler-tools|move-project-builder|sui-framework-helpers|sui-move-build-helper|sui-sdk-build-utils)(\\s*[:=]|[\"'@]|$)"
+    }
+  ],
+  "compositeIocs": [
+    {
+      "label": "TrapDoor trap-core.js credential harvester",
+      "severity": "critical",
+      "minMatches": 4,
+      "signals": [
+        {
+          "label": "shared payload reference",
+          "pattern": "(?i)trap-core\\.js"
+        },
+        {
+          "label": "credential and wallet targets",
+          "pattern": "(?is)(\\.ssh/id_|AWS_ACCESS_KEY_ID|AWS_SECRET_ACCESS_KEY|GITHUB_TOKEN|\\.aws/credentials|Login Data|keystore|mnemonic|\\b(Sui|Solana|Aptos)\\b)"
+        },
+        {
+          "label": "GitHub exfiltration channel",
+          "pattern": "(?i)(api\\.github\\.com/gists|gist\\.github\\.com)"
+        },
+        {
+          "label": "campaign beacon",
+          "pattern": "(?i)(ddjidd564\\.github\\.io|\\btrapActivation\\b|P-2024-001)"
+        },
+        {
+          "label": "process or network execution",
+          "pattern": "(?i)(child_process|execSync|\\.spawn\\(|fetch\\(|https?\\.request|node\\s+-e)"
+        },
+        {
+          "label": "SSH lateral movement",
+          "pattern": "(?is)(ssh\\s+-i|known_hosts|authorized_keys|StrictHostKeyChecking)"
+        }
+      ]
+    },
+    {
+      "label": "TrapDoor crates build.rs keystore exfiltration",
+      "severity": "critical",
+      "minMatches": 3,
+      "signals": [
+        {
+          "label": "crates XOR key",
+          "pattern": "(?i)cargo-build-helper-2026"
+        },
+        {
+          "label": "build-script execution context",
+          "pattern": "(?i)(build\\.rs|std::process::Command|cargo:rerun-if|fn\\s+main\\s*\\()"
+        },
+        {
+          "label": "keystore and wallet search",
+          "pattern": "(?is)(keystore|\\.sui|\\.aptos|solana|move|id_rsa|\\.ssh|aws/credentials|wallet)"
+        },
+        {
+          "label": "GitHub Gist exfiltration",
+          "pattern": "(?i)(api\\.github\\.com/gists|gist\\.github\\.com)"
+        },
+        {
+          "label": "XOR or encode routine",
+          "pattern": "(?i)(\\bxor\\b|base64::encode|hex::encode|to_base64|\\^\\s*key)"
+        }
+      ]
+    },
+    {
+      "label": "TrapDoor PyPI import-time GitHub Pages loader",
+      "severity": "critical",
+      "minMatches": 3,
+      "signals": [
+        {
+          "label": "Python downloader",
+          "pattern": "(?i)(urllib\\.request|requests\\.get|httpx\\.|urlopen|urlretrieve)"
+        },
+        {
+          "label": "GitHub Pages payload host",
+          "pattern": "(?i)ddjidd564\\.github\\.io"
+        },
+        {
+          "label": "JavaScript execution of payload",
+          "pattern": "(?i)(node\\s+-e|node\\s+/|trap-core\\.js)"
+        },
+        {
+          "label": "import-time process execution",
+          "pattern": "(?i)(exec\\(|os\\.system|subprocess\\.(run|Popen|call))"
+        }
+      ]
+    },
+    {
+      "label": "TrapDoor AI-assistant config injection",
+      "severity": "high",
+      "minMatches": 3,
+      "signals": [
+        {
+          "label": "AI-agent config marker",
+          "pattern": "(?i)(\\.cursorrules|claude\\.md|agents\\.md|copilot-instructions)"
+        },
+        {
+          "label": "campaign beacon or config pointer",
+          "pattern": "(?i)(ddjidd564\\.github\\.io|defi-security-best-practices/config\\.json)"
+        },
+        {
+          "label": "fake security-scan lure",
+          "pattern": "(?is)(security scan|run [^\\n]{0,40}audit|verify [^\\n]{0,40}environment|defi-security)"
+        },
+        {
+          "label": "run-command instruction",
+          "pattern": "(?i)(curl\\s|wget\\s|npm\\s+install|pip\\s+install|cargo\\s+(add|install|build)|node\\s|execute the following|run the (following )?command)"
+        },
+        {
+          "label": "hidden or bidirectional unicode",
+          "pattern": "[\\x{200B}-\\x{200F}\\x{202A}-\\x{202E}\\x{2060}-\\x{2064}\\x{FEFF}]"
+        }
+      ]
+    }
+  ]
+}
