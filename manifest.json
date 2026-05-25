@@ -1,7 +1,13 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-05-23T15:30:00Z",
+  "updatedAt": "2026-05-24T18:45:00Z",
   "packs": [
+    {
+      "id": "trapdoor-2026-05",
+      "campaign": "TrapDoor crypto stealer May 2026",
+      "url": "packs/trapdoor-2026-05.json",
+      "affectedPackagesUrl": "packs/trapdoor-2026-05-packages.csv"
+    },
     {
       "id": "laravel-lang-2026-05",
       "campaign": "Laravel Lang Composer compromise May 2026",
