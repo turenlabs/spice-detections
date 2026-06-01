@@ -1,7 +1,13 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-05-24T18:45:00Z",
+  "updatedAt": "2026-06-01T15:00:00Z",
   "packs": [
+    {
+      "id": "miasma-2026-06",
+      "campaign": "Miasma: The Spreading Blight (Red Hat npm) June 2026",
+      "url": "packs/miasma-2026-06.json",
+      "affectedPackagesUrl": "packs/miasma-2026-06-packages.csv"
+    },
     {
       "id": "trapdoor-2026-05",
       "campaign": "TrapDoor crypto stealer May 2026",
