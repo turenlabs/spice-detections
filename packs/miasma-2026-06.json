@@ -1,0 +1,110 @@
+{
+  "schemaVersion": 1,
+  "id": "miasma-2026-06",
+  "campaign": "Miasma: The Spreading Blight (Red Hat npm) June 2026",
+  "suspiciousFilenames": [],
+  "knownSha256": {},
+  "knownSha1": {},
+  "iocs": [
+    {
+      "label": "Miasma GitHub dead-drop repository marker",
+      "severity": "critical",
+      "pattern": "(?i)Miasma:\\s*The Spreading Blight"
+    },
+    {
+      "label": "Miasma Anthropic-camouflaged exfil endpoint",
+      "severity": "critical",
+      "pattern": "(?i)api\\.anthropic\\.com/v1/api\\b"
+    },
+    {
+      "label": "Miasma GCP-identity collector user-agent",
+      "severity": "high",
+      "pattern": "(?i)google-api-nodejs-client/7\\.0\\.0 gl-node/20\\.11\\.0 gccl/7\\.0\\.0"
+    },
+    {
+      "label": "Miasma OIDC publish-workflow env marker",
+      "severity": "high",
+      "pattern": "(?i)\\bOIDC_PACKAGES\\b"
+    },
+    {
+      "label": "Miasma pinned malicious setup-bun action",
+      "severity": "high",
+      "pattern": "(?i)oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6"
+    }
+  ],
+  "compositeIocs": [
+    {
+      "label": "Miasma preinstall index.js loader in Red Hat namespace",
+      "severity": "critical",
+      "minMatches": 2,
+      "signals": [
+        {
+          "label": "Red Hat Cloud Services scope",
+          "pattern": "(?i)@redhat-cloud-services/"
+        },
+        {
+          "label": "malicious preinstall hook",
+          "pattern": "(?i)\"preinstall\"\\s*:\\s*\"node\\s+_?index\\.js\""
+        }
+      ]
+    },
+    {
+      "label": "Miasma OIDC release workflow payload",
+      "severity": "critical",
+      "minMatches": 3,
+      "signals": [
+        {
+          "label": "Bun payload invocation",
+          "pattern": "(?i)bun\\s+run\\s+_?index\\.js"
+        },
+        {
+          "label": "OIDC packages env",
+          "pattern": "(?i)\\bOIDC_PACKAGES\\b"
+        },
+        {
+          "label": "id-token write permission",
+          "pattern": "(?i)id-token\\s*:\\s*write"
+        },
+        {
+          "label": "pinned malicious setup-bun action",
+          "pattern": "(?i)oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6"
+        },
+        {
+          "label": "pinned malicious checkout action",
+          "pattern": "(?i)actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd"
+        }
+      ]
+    },
+    {
+      "label": "Miasma payload credential and cloud-identity harvester",
+      "severity": "critical",
+      "minMatches": 3,
+      "signals": [
+        {
+          "label": "campaign beacon",
+          "pattern": "(?i)(Miasma:\\s*The Spreading Blight|api\\.anthropic\\.com/v1/api|google-api-nodejs-client/7\\.0\\.0 gl-node/20\\.11\\.0 gccl/7\\.0\\.0)"
+        },
+        {
+          "label": "multi-stage AES decryption chain",
+          "pattern": "(?i)(aes-128-gcm|createDecipheriv)"
+        },
+        {
+          "label": "cloud-identity and CI credential sweep",
+          "pattern": "(?is)(GITHUB_TOKEN|ACTIONS_RUNTIME_TOKEN|ACTIONS_ID_TOKEN_REQUEST_TOKEN|AWS_SECRET_ACCESS_KEY|GOOGLE_APPLICATION_CREDENTIALS|AZURE_CLIENT_SECRET|AZURE_TENANT_ID|VAULT_TOKEN|KUBECONFIG|KUBERNETES_SERVICE_HOST)"
+        },
+        {
+          "label": "transient Bun payload drop",
+          "pattern": "(?i)(bun_environment|bunx\\s|\\bbun\\s+run\\b|/tmp/p[A-Za-z0-9]{1,12}\\.js)"
+        },
+        {
+          "label": "persistence and dead-man switch",
+          "pattern": "(?i)(kitty-monitor|gh-token-monitor)"
+        },
+        {
+          "label": "GitHub dead-drop repository write",
+          "pattern": "(?i)api\\.github\\.com/(user/repos|repos/[^\\s\"']{1,180}/contents/)"
+        }
+      ]
+    }
+  ]
+}
