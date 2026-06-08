@@ -189,6 +189,29 @@
       ]
     },
     {
+      "label": "Miasma repo-open AI/IDE payload trigger",
+      "severity": "critical",
+      "minMatches": 2,
+      "signals": [
+        {
+          "label": "hidden setup.js payload handoff",
+          "pattern": "(?i)node\\s+\\.github/setup\\.js"
+        },
+        {
+          "label": "Claude or Gemini SessionStart hook",
+          "pattern": "(?i)\\bSessionStart\\b"
+        },
+        {
+          "label": "Cursor always-apply setup rule",
+          "pattern": "(?i)alwaysApply\\s*:\\s*true"
+        },
+        {
+          "label": "VS Code folder-open task",
+          "pattern": "(?i)runOn\\s*\"?\\s*:\\s*\"?folderOpen"
+        }
+      ]
+    },
+    {
       "label": "Miasma payload credential and cloud-identity harvester",
       "severity": "critical",
       "minMatches": 3,
