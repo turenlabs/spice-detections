@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-06-01T15:00:00Z",
+  "updatedAt": "2026-06-08T16:31:57Z",
   "packs": [
     {
       "id": "miasma-2026-06",
-      "campaign": "Miasma: The Spreading Blight (Red Hat npm) June 2026",
+      "campaign": "Miasma / Hades Mini Shai-Hulud June 2026",
       "url": "packs/miasma-2026-06.json",
       "affectedPackagesUrl": "packs/miasma-2026-06-packages.csv"
     },
