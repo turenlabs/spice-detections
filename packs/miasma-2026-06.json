@@ -1,9 +1,13 @@
 {
   "schemaVersion": 1,
   "id": "miasma-2026-06",
-  "campaign": "Miasma: The Spreading Blight (Red Hat npm) June 2026",
+  "campaign": "Miasma / Hades Mini Shai-Hulud June 2026",
   "suspiciousFilenames": [],
-  "knownSha256": {},
+  "knownSha256": {
+    "dc48b09b2a5954f7ff79ab8a2fd80202bd3b59c08c7cdbc6025aa923cb4c0efe": "Hades PyPI _index.js payload variant 1",
+    "e1342a80d4b5e83d2c7c22e1e0aaa95f2d88e3dbf0d853a4994b180c93a4b17d": "Hades PyPI _index.js payload variant 2",
+    "c539766062555d47716f8432e73adbe3a0c0c954a0b6c4005017a668975e275c": "Hades PyPI *-setup.pth startup loader"
+  },
   "knownSha1": {},
   "iocs": [
     {
@@ -15,6 +19,26 @@
       "label": "Miasma Anthropic-camouflaged exfil endpoint",
       "severity": "critical",
       "pattern": "(?i)api\\.anthropic\\.com/v1/api\\b"
+    },
+    {
+      "label": "Hades GitHub dead-drop repository marker",
+      "severity": "critical",
+      "pattern": "(?i)Hades\\s*-\\s*The End for the Damned"
+    },
+    {
+      "label": "Hades GitHub exfil commit marker",
+      "severity": "critical",
+      "pattern": "(?i)IfYouYankThisTokenItWillNukeTheComputerOfTheOwnerFully"
+    },
+    {
+      "label": "Hades PyPI Bun runtime download",
+      "severity": "high",
+      "pattern": "(?i)oven-sh/bun/releases/download(?:/bun-v[0-9.]+)?"
+    },
+    {
+      "label": "Hades PyPI Bun startup sentinel",
+      "severity": "high",
+      "pattern": "(?i)\\.bun_ran\\b"
     },
     {
       "label": "Miasma GCP-identity collector user-agent",
@@ -33,6 +57,95 @@
     }
   ],
   "compositeIocs": [
+    {
+      "label": "Hades PyPI .pth Bun startup loader",
+      "severity": "critical",
+      "minMatches": 5,
+      "signals": [
+        {
+          "label": ".pth executable import line",
+          "pattern": "(?m)^\\s*import\\s+"
+        },
+        {
+          "label": "Python downloader",
+          "pattern": "(?i)(urllib\\.request|urlretrieve|urlopen)"
+        },
+        {
+          "label": "tempdir sentinel or Bun cache",
+          "pattern": "(?i)(tempfile\\.gettempdir|\\.bun_ran|b\\.zip)"
+        },
+        {
+          "label": "Bun release download",
+          "pattern": "(?i)(oven-sh/bun/releases/download|bun-v[0-9.]+)"
+        },
+        {
+          "label": "_index.js payload handoff",
+          "pattern": "(?i)_index\\.js"
+        },
+        {
+          "label": "subprocess execution",
+          "pattern": "(?i)(subprocess\\.run|subprocess\\.Popen|Popen\\(|os\\.system)"
+        }
+      ]
+    },
+    {
+      "label": "Hades GitHub exfiltration artifact",
+      "severity": "critical",
+      "minMatches": 2,
+      "signals": [
+        {
+          "label": "Hades repository description",
+          "pattern": "(?i)Hades\\s*-\\s*The End for the Damned"
+        },
+        {
+          "label": "Hades commit marker",
+          "pattern": "(?i)IfYouYankThisTokenItWillNukeTheComputerOfTheOwnerFully"
+        },
+        {
+          "label": "results envelope path",
+          "pattern": "(?i)results/results-[^\\s\"']+\\.json"
+        },
+        {
+          "label": "format-results artifact",
+          "pattern": "(?i)\\bformat-results\\b"
+        },
+        {
+          "label": "Run Copilot workflow",
+          "pattern": "(?i)\\bRun Copilot\\b"
+        }
+      ]
+    },
+    {
+      "label": "Hades Bun JavaScript credential stealer",
+      "severity": "critical",
+      "minMatches": 4,
+      "signals": [
+        {
+          "label": "Hades or Anthropic campaign marker",
+          "pattern": "(?i)(Hades\\s*-\\s*The End for the Damned|api\\.anthropic\\.com/v1/api)"
+        },
+        {
+          "label": "obfuscated eval or AES-GCM stage",
+          "pattern": "(?i)(try\\s*\\{\\s*eval|aes-128-gcm|aes-256-gcm|createDecipheriv|PBKDF2)"
+        },
+        {
+          "label": "developer and CI credential sweep",
+          "pattern": "(?is)(GITHUB_TOKEN|ACTIONS_RUNTIME_TOKEN|AWS_SECRET_ACCESS_KEY|GOOGLE_APPLICATION_CREDENTIALS|AZURE_CLIENT_SECRET|VAULT_TOKEN|KUBECONFIG|\\.npmrc|\\.pypirc|Claude|MCP)"
+        },
+        {
+          "label": "GitHub repository exfiltration",
+          "pattern": "(?i)api\\.github\\.com/(user/repos|repos/[^\\s\"']{1,180}/contents/)"
+        },
+        {
+          "label": "Hades result artifact",
+          "pattern": "(?i)(results/results-[^\\s\"']+\\.json|format-results|Run Copilot)"
+        },
+        {
+          "label": "Bun runtime execution",
+          "pattern": "(?i)(\\bbun\\s+run\\b|process\\.execPath|oven-sh/bun/releases/download)"
+        }
+      ]
+    },
     {
       "label": "Miasma preinstall index.js loader in Red Hat namespace",
       "severity": "critical",
