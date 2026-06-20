@@ -1,0 +1,128 @@
+{
+  "schemaVersion": 1,
+  "id": "phantom-gyp-2026-06",
+  "campaign": "Miasma Phantom Gyp npm compromise June 2026",
+  "suspiciousFilenames": [],
+  "knownSha256": {},
+  "knownSha1": {},
+  "iocs": [
+    {
+      "label": "Phantom Gyp binding.gyp command substitution",
+      "severity": "critical",
+      "pattern": "(?i)<!\\(\\s*node\\s+index\\.js\\s*>\\s*/dev/null\\s+2>&1\\s*&&\\s*echo\\s+stub\\.c\\s*\\)"
+    },
+    {
+      "label": "Miasma GitHub dead-drop repository marker",
+      "severity": "critical",
+      "pattern": "(?i)Miasma:\\s*The Spreading Blight"
+    },
+    {
+      "label": "Miasma Anthropic-camouflaged exfil endpoint",
+      "severity": "critical",
+      "pattern": "(?i)api\\.anthropic\\.com/v1/api\\b"
+    },
+    {
+      "label": "Miasma Bun runtime download",
+      "severity": "high",
+      "pattern": "(?i)oven-sh/bun/releases/download(?:/bun-v[0-9.]+)?"
+    },
+    {
+      "label": "Miasma GitHub Actions memory theft",
+      "severity": "critical",
+      "pattern": "(?i)Runner\\.Worker"
+    },
+    {
+      "label": "Miasma credential result artifact",
+      "severity": "high",
+      "pattern": "(?i)results/results-[^\\s\"']+\\.json"
+    },
+    {
+      "label": "Miasma GitHub dead-drop account",
+      "severity": "high",
+      "pattern": "(?i)liuende501"
+    }
+  ],
+  "compositeIocs": [
+    {
+      "label": "Phantom Gyp install-time node execution",
+      "severity": "critical",
+      "minMatches": 3,
+      "signals": [
+        {
+          "label": "gyp targets block",
+          "pattern": "(?i)\"targets\"\\s*:"
+        },
+        {
+          "label": "setup target",
+          "pattern": "(?i)\"target_name\"\\s*:\\s*\"Setup\""
+        },
+        {
+          "label": "node index.js command substitution",
+          "pattern": "(?i)<!\\(\\s*node\\s+index\\.js"
+        },
+        {
+          "label": "silent execution",
+          "pattern": "(?i)>\\s*/dev/null\\s+2>&1"
+        },
+        {
+          "label": "stub source fallback",
+          "pattern": "(?i)echo\\s+stub\\.c"
+        }
+      ]
+    },
+    {
+      "label": "Miasma Bun credential stealer",
+      "severity": "critical",
+      "minMatches": 4,
+      "signals": [
+        {
+          "label": "Bun runtime download",
+          "pattern": "(?i)oven-sh/bun/releases/download"
+        },
+        {
+          "label": "developer and CI credential sweep",
+          "pattern": "(?is)(GITHUB_TOKEN|ACTIONS_RUNTIME_TOKEN|AWS_SECRET_ACCESS_KEY|GOOGLE_APPLICATION_CREDENTIALS|AZURE_CLIENT_SECRET|VAULT_TOKEN|KUBECONFIG|\\.npmrc|\\.pypirc)"
+        },
+        {
+          "label": "GitHub exfiltration",
+          "pattern": "(?i)api\\.github\\.com/(user/repos|repos/[^\\s\"']{1,180}/contents/)"
+        },
+        {
+          "label": "credential result artifact",
+          "pattern": "(?i)results/results-[^\\s\"']+\\.json"
+        },
+        {
+          "label": "GitHub Actions secret memory access",
+          "pattern": "(?i)(Runner\\.Worker|/proc/[0-9]+/mem|gh\\s+auth\\s+token)"
+        }
+      ]
+    },
+    {
+      "label": "Miasma workflow propagation",
+      "severity": "critical",
+      "minMatches": 3,
+      "signals": [
+        {
+          "label": "OIDC packages env",
+          "pattern": "(?i)\\bOIDC_PACKAGES\\b"
+        },
+        {
+          "label": "id-token write permission",
+          "pattern": "(?i)id-token\\s*:\\s*write"
+        },
+        {
+          "label": "Bun payload invocation",
+          "pattern": "(?i)bun\\s+run\\s+_?index\\.js"
+        },
+        {
+          "label": "pinned malicious setup-bun action",
+          "pattern": "(?i)oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6"
+        },
+        {
+          "label": "pinned malicious checkout action",
+          "pattern": "(?i)actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd"
+        }
+      ]
+    }
+  ]
+}

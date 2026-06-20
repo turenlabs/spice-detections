@@ -1,0 +1,175 @@
+{
+  "schemaVersion": 1,
+  "id": "mastra-2026-06",
+  "campaign": "Mastra / easy-day-js npm compromise June 2026",
+  "suspiciousFilenames": [
+    "protocal.cjs",
+    "com.nvm.protocal.plist",
+    "nvmconf.service"
+  ],
+  "knownSha256": {
+    "b122a9873bedf145ae2a7fd024b5f309007dbb025149f4dc4ac3f7e4f32a36a4": "easy-day-js setup.cjs stage-1 loader",
+    "c38954e85bf5433e61e7c8f4230336695624ae88b6953afabf7bf817aa91b638": "easy-day-js@1.11.22 package.json",
+    "cdec8b20338beb708b5be8d3d7a3041a35a8b0fb92f9186262f312d55ff82066": "easy-day-js loader variant",
+    "9570f77a5e1511869f4e554e7166df9fde081f2583e293c2569621792ed7d9c9": "easy-day-js loader variant",
+    "221c45a790dec2a296af57969e1165a16f8f49733aeab64c0bbd768d9943badf": "easy-day-js stage-2 stealer"
+  },
+  "knownSha1": {},
+  "iocs": [
+    {
+      "label": "Mastra injected easy-day-js dependency",
+      "severity": "critical",
+      "pattern": "(?i)\"easy-day-js\"\\s*:\\s*\"\\^?1\\.11\\.21\""
+    },
+    {
+      "label": "easy-day-js malicious postinstall hook",
+      "severity": "critical",
+      "pattern": "(?i)\"postinstall\"\\s*:\\s*\"node\\s+setup\\.cjs\\s+--no-warnings\""
+    },
+    {
+      "label": "easy-day-js stage-1 C2",
+      "severity": "critical",
+      "pattern": "(?i)23\\.254\\.164\\.92:8000/update/49890878"
+    },
+    {
+      "label": "easy-day-js stage-2 exfil endpoint",
+      "severity": "critical",
+      "pattern": "(?i)23\\.254\\.164\\.123:443/49890878"
+    },
+    {
+      "label": "easy-day-js TLS verification disabled",
+      "severity": "high",
+      "pattern": "(?i)NODE_TLS_REJECT_UNAUTHORIZED"
+    },
+    {
+      "label": "easy-day-js loader temp marker",
+      "severity": "high",
+      "pattern": "(?i)(\\.pkg_history|\\.pkg_logs)"
+    },
+    {
+      "label": "easy-day-js Windows persistence name",
+      "severity": "critical",
+      "pattern": "(?i)NvmProtocal"
+    },
+    {
+      "label": "easy-day-js macOS LaunchAgent label",
+      "severity": "critical",
+      "pattern": "(?i)com\\.nvm\\.protocal"
+    },
+    {
+      "label": "easy-day-js Linux systemd unit",
+      "severity": "critical",
+      "pattern": "(?i)nvmconf\\.service"
+    },
+    {
+      "label": "easy-day-js NodePackages persistence directory",
+      "severity": "high",
+      "pattern": "(?i)NodePackages"
+    }
+  ],
+  "compositeIocs": [
+    {
+      "label": "Mastra easy-day-js dependency injection",
+      "severity": "critical",
+      "minMatches": 2,
+      "signals": [
+        {
+          "label": "Mastra package scope",
+          "pattern": "(?i)@mastra/"
+        },
+        {
+          "label": "easy-day-js dependency",
+          "pattern": "(?i)\"easy-day-js\"\\s*:\\s*\"\\^?1\\.11\\.21\""
+        },
+        {
+          "label": "npm package manifest",
+          "pattern": "(?i)\"(dependencies|optionalDependencies|devDependencies)\"\\s*:"
+        }
+      ]
+    },
+    {
+      "label": "easy-day-js postinstall loader",
+      "severity": "critical",
+      "minMatches": 2,
+      "signals": [
+        {
+          "label": "easy-day-js package name",
+          "pattern": "(?i)\"name\"\\s*:\\s*\"easy-day-js\""
+        },
+        {
+          "label": "setup.cjs postinstall",
+          "pattern": "(?i)\"postinstall\"\\s*:\\s*\"node\\s+setup\\.cjs\\s+--no-warnings\""
+        },
+        {
+          "label": "setup.cjs loader file",
+          "pattern": "(?i)setup\\.cjs"
+        }
+      ]
+    },
+    {
+      "label": "easy-day-js stage-1 downloader",
+      "severity": "critical",
+      "minMatches": 3,
+      "signals": [
+        {
+          "label": "TLS verification disabled",
+          "pattern": "(?i)NODE_TLS_REJECT_UNAUTHORIZED"
+        },
+        {
+          "label": "stage-1 download endpoint",
+          "pattern": "(?i)23\\.254\\.164\\.92:8000/update/49890878"
+        },
+        {
+          "label": "loader marker files",
+          "pattern": "(?i)(\\.pkg_history|\\.pkg_logs)"
+        },
+        {
+          "label": "detached Node execution",
+          "pattern": "(?i)(child_process\\.spawn|process\\.execPath|windowsHide|detached\\s*:\\s*true)"
+        }
+      ]
+    },
+    {
+      "label": "easy-day-js cross-platform persistence",
+      "severity": "critical",
+      "minMatches": 2,
+      "signals": [
+        {
+          "label": "dropped stage-2 filename",
+          "pattern": "(?i)protocal\\.cjs"
+        },
+        {
+          "label": "Node tooling camouflage",
+          "pattern": "(?i)(NvmProtocal|com\\.nvm\\.protocal|nvmconf\\.service|NodePackages)"
+        },
+        {
+          "label": "stage-2 bot path",
+          "pattern": "(?i)(23\\.254\\.164\\.123:443/49890878|/49890878)"
+        }
+      ]
+    },
+    {
+      "label": "easy-day-js stage-2 tasking client",
+      "severity": "critical",
+      "minMatches": 3,
+      "signals": [
+        {
+          "label": "custom ICAP-style strings",
+          "pattern": "(?i)(reqmod|PrimaryUrl|SecondaryUrl|sub_net_resolve|sub_net_splithostport)"
+        },
+        {
+          "label": "browser history staging",
+          "pattern": "(?i)browser-hist-"
+        },
+        {
+          "label": "wallet extension inventory",
+          "pattern": "(?i)Local Extension Settings"
+        },
+        {
+          "label": "task runner loop",
+          "pattern": "(?i)(Unknown runner|Cycle|Start)"
+        }
+      ]
+    }
+  ]
+}
