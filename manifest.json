@@ -1,7 +1,19 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-06-08T19:37:13Z",
+  "updatedAt": "2026-06-20T21:26:08Z",
   "packs": [
+    {
+      "id": "mastra-2026-06",
+      "campaign": "Mastra / easy-day-js npm compromise June 2026",
+      "url": "packs/mastra-2026-06.json",
+      "affectedPackagesUrl": "packs/mastra-2026-06-packages.csv"
+    },
+    {
+      "id": "phantom-gyp-2026-06",
+      "campaign": "Miasma Phantom Gyp npm compromise June 2026",
+      "url": "packs/phantom-gyp-2026-06.json",
+      "affectedPackagesUrl": "packs/phantom-gyp-2026-06-packages.csv"
+    },
     {
       "id": "miasma-2026-06",
       "campaign": "Miasma / Hades Mini Shai-Hulud June 2026",
