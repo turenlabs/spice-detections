@@ -41,6 +41,31 @@
       "pattern": "(?i)\\.bun_ran\\b"
     },
     {
+      "label": "Leo/RStreams GitHub dead-drop repository marker",
+      "severity": "critical",
+      "pattern": "(?i)Alright\\s+Lets\\s+See\\s+If\\s+This\\s+Works"
+    },
+    {
+      "label": "Leo/RStreams GitHub exfil commit marker",
+      "severity": "critical",
+      "pattern": "(?i)RevokeAndItGoesKaboom"
+    },
+    {
+      "label": "Leo/RStreams payload time markers",
+      "severity": "high",
+      "pattern": "(?i)(TheBeautifulSandsOfTime|thebeautifulmarchoftime)"
+    },
+    {
+      "label": "Leo/RStreams payload RSA public key prefix",
+      "severity": "high",
+      "pattern": "(?i)(MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAut0YWEh9/gZIsSoF6feF|MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAwtmpAkLxoe3q3BxHOLPE)"
+    },
+    {
+      "label": "Leo/RStreams GitHub commit-search marker",
+      "severity": "high",
+      "pattern": "(?i)api\\.github\\.com/search/commits\\?q=firedalazer"
+    },
+    {
       "label": "Miasma GCP-identity collector user-agent",
       "severity": "high",
       "pattern": "(?i)google-api-nodejs-client/7\\.0\\.0 gl-node/20\\.11\\.0 gccl/7\\.0\\.0"
@@ -89,17 +114,17 @@
       ]
     },
     {
-      "label": "Hades GitHub exfiltration artifact",
+      "label": "Hades/Leo GitHub exfiltration artifact",
       "severity": "critical",
       "minMatches": 2,
       "signals": [
         {
-          "label": "Hades repository description",
-          "pattern": "(?i)Hades\\s*-\\s*The End for the Damned"
+          "label": "Hades or Leo repository description",
+          "pattern": "(?i)(Hades\\s*-\\s*The End for the Damned|Alright\\s+Lets\\s+See\\s+If\\s+This\\s+Works)"
         },
         {
-          "label": "Hades commit marker",
-          "pattern": "(?i)IfYouYankThisTokenItWillNukeTheComputerOfTheOwnerFully"
+          "label": "Hades or Leo commit marker",
+          "pattern": "(?i)(IfYouYankThisTokenItWillNukeTheComputerOfTheOwnerFully|RevokeAndItGoesKaboom)"
         },
         {
           "label": "results envelope path",
@@ -116,13 +141,13 @@
       ]
     },
     {
-      "label": "Hades Bun JavaScript credential stealer",
+      "label": "Hades/Leo Bun JavaScript credential stealer",
       "severity": "critical",
       "minMatches": 4,
       "signals": [
         {
-          "label": "Hades or Anthropic campaign marker",
-          "pattern": "(?i)(Hades\\s*-\\s*The End for the Damned|api\\.anthropic\\.com/v1/api)"
+          "label": "Hades, Leo, or Anthropic campaign marker",
+          "pattern": "(?i)(Hades\\s*-\\s*The End for the Damned|Alright\\s+Lets\\s+See\\s+If\\s+This\\s+Works|RevokeAndItGoesKaboom|api\\.anthropic\\.com/v1/api)"
         },
         {
           "label": "obfuscated eval or AES-GCM stage",
@@ -143,6 +168,52 @@
         {
           "label": "Bun runtime execution",
           "pattern": "(?i)(\\bbun\\s+run\\b|process\\.execPath|oven-sh/bun/releases/download)"
+        }
+      ]
+    },
+    {
+      "label": "Leo/RStreams gated SEED_PAT bootstrap path",
+      "severity": "high",
+      "minMatches": 3,
+      "signals": [
+        {
+          "label": "GitHub Actions repository environment",
+          "pattern": "(?i)\\bGITHUB_REPOSITORY\\b"
+        },
+        {
+          "label": "Seeder repository gate",
+          "pattern": "(?i)\\bSeeder\\b"
+        },
+        {
+          "label": "SEED_PAT token input",
+          "pattern": "(?i)\\bSEED_PAT\\b"
+        },
+        {
+          "label": "Leo token relay marker",
+          "pattern": "(?i)RevokeAndItGoesKaboom"
+        }
+      ]
+    },
+    {
+      "label": "Leo/RStreams AI-tool persistence and workflow artifacts",
+      "severity": "critical",
+      "minMatches": 3,
+      "signals": [
+        {
+          "label": "Leo campaign or token marker",
+          "pattern": "(?i)(Alright\\s+Lets\\s+See\\s+If\\s+This\\s+Works|RevokeAndItGoesKaboom)"
+        },
+        {
+          "label": "AI/editor persistence paths",
+          "pattern": "(?i)(\\.cursor/rules/setup\\.mdc|\\.gemini/settings\\.json|\\.cursorrules|\\.windsurfrules|\\.github/copilot-instructions\\.md|mcp\\.json|\\.aider\\.conf\\.yml)"
+        },
+        {
+          "label": "workflow secret-dump markers",
+          "pattern": "(?i)(VARIABLE_STORE|format-results\\.txt|OIDC_PACKAGES|WORKFLOW_ID|REPO_ID_SUFFIX)"
+        },
+        {
+          "label": "Bun or repo-open payload execution",
+          "pattern": "(?i)(\\bbun\\s+run\\b|node\\s+\\.github/setup\\.(?:mjs|js)|oven-sh/bun/releases/download)"
         }
       ]
     },
