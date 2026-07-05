@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "id": "polinrider-2026-07",
+  "campaign": "PolinRider cross-ecosystem supply-chain campaign July 2026",
+  "suspiciousFilenames": [
+    "_.woff2"
+  ],
+  "knownSha256": {},
+  "knownSha1": {},
+  "iocs": [],
+  "compositeIocs": [
+    {
+      "label": "PolinRider VS Code fake-font repo-open loader",
+      "severity": "critical",
+      "minMatches": 3,
+      "signals": [
+        {
+          "label": "VS Code folder-open task",
+          "pattern": "(?i)runOn\\s*\"?\\s*:\\s*\"?folderOpen"
+        },
+        {
+          "label": "fake WOFF2 JavaScript payload",
+          "pattern": "(?i)\\b_[A-Za-z0-9_-]*\\.woff2\\b|\\.woff2"
+        },
+        {
+          "label": "Node executes disguised font",
+          "pattern": "(?i)(node\\s+[^\\n\"']+\\.woff2|\\.woff2[^\\n]{0,160}node)"
+        },
+        {
+          "label": "repo-open persistence path",
+          "pattern": "(?i)(\\.vscode/tasks\\.json|vite\\.config\\.js|eslint\\.config\\.js)"
+        }
+      ]
+    },
+    {
+      "label": "PolinRider obfuscated blockchain credential loader",
+      "severity": "critical",
+      "minMatches": 3,
+      "signals": [
+        {
+          "label": "obfuscated JavaScript execution",
+          "pattern": "(?i)(eval\\s*\\(|Function\\s*\\(|atob\\s*\\(|Buffer\\.from\\()"
+        },
+        {
+          "label": "blockchain RPC targeting",
+          "pattern": "(?i)(trongrid|tronscan|aptoslabs|bsc-dataseed|eth_call|solana|wallet)"
+        },
+        {
+          "label": "developer secret collection",
+          "pattern": "(?is)(GITHUB_TOKEN|NPM_TOKEN|\\.npmrc|\\.pypirc|id_rsa|\\.ssh|private key|mnemonic|seed phrase)"
+        },
+        {
+          "label": "configuration-file injection site",
+          "pattern": "(?i)(vite\\.config\\.js|eslint\\.config\\.js|next\\.config\\.js|\\.vscode/tasks\\.json|composer\\.json|go\\.mod)"
+        },
+        {
+          "label": "North Korean malware-family marker",
+          "pattern": "(?i)(DEV#POPPER|OmniStealer|BeaverTail|InvisibleFerret)"
+        }
+      ]
+    }
+  ]
+}

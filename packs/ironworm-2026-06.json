@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "id": "ironworm-2026-06",
+  "campaign": "IronWorm npm compromise June 2026",
+  "suspiciousFilenames": [
+    "setup",
+    "precheck"
+  ],
+  "knownSha256": {},
+  "knownSha1": {},
+  "iocs": [
+    {
+      "label": "IronWorm tools/setup preinstall hook",
+      "severity": "critical",
+      "pattern": "(?i)\"preinstall\"\\s*:\\s*\"\\./tools/setup\""
+    },
+    {
+      "label": "IronWorm spoofed Claude commit author",
+      "severity": "high",
+      "pattern": "(?i)claude@users\\.noreply\\.github\\.com"
+    },
+    {
+      "label": "IronWorm trusted-publishing OIDC exchange",
+      "severity": "high",
+      "pattern": "(?i)/-/npm/v1/oidc/token/exchange/package/"
+    }
+  ],
+  "compositeIocs": [
+    {
+      "label": "IronWorm npm preinstall binary loader",
+      "severity": "critical",
+      "minMatches": 2,
+      "signals": [
+        {
+          "label": "known IronWorm package family",
+          "pattern": "(?i)(@?weavedb|warp-contracts|redstone-|arlocal|arweave)"
+        },
+        {
+          "label": "preinstall tools/setup hook",
+          "pattern": "(?i)\"preinstall\"\\s*:\\s*\"\\./tools/setup\""
+        },
+        {
+          "label": "bundled setup binary path",
+          "pattern": "(?i)(tools/setup|\\.github/scripts/precheck)"
+        },
+        {
+          "label": "spoofed AI commit author",
+          "pattern": "(?i)claude@users\\.noreply\\.github\\.com"
+        }
+      ]
+    },
+    {
+      "label": "IronWorm workflow secret artifact exfiltration",
+      "severity": "critical",
+      "minMatches": 3,
+      "signals": [
+        {
+          "label": "GitHub variable store dump",
+          "pattern": "(?i)VARIABLE_STORE"
+        },
+        {
+          "label": "secrets JSON expansion",
+          "pattern": "(?i)toJSON\\(secrets\\)"
+        },
+        {
+          "label": "format-results artifact",
+          "pattern": "(?i)format-results\\.txt"
+        },
+        {
+          "label": "pinned checkout/upload actions",
+          "pattern": "(?i)(actions/checkout@[0-9a-f]{40}|actions/upload-artifact@[0-9a-f]{40})"
+        },
+        {
+          "label": "GitHub repository content write",
+          "pattern": "(?i)api\\.github\\.com/repos/[^\\s\"']+/contents/"
+        }
+      ]
+    }
+  ]
+}

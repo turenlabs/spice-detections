@@ -1,7 +1,24 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-06-26T16:37:21Z",
+  "updatedAt": "2026-07-05T15:11:41Z",
   "packs": [
+    {
+      "id": "polinrider-2026-07",
+      "campaign": "PolinRider cross-ecosystem supply-chain campaign July 2026",
+      "url": "packs/polinrider-2026-07.json",
+      "affectedPackagesUrl": "packs/polinrider-2026-07-packages.csv"
+    },
+    {
+      "id": "ironworm-2026-06",
+      "campaign": "IronWorm npm compromise June 2026",
+      "url": "packs/ironworm-2026-06.json",
+      "affectedPackagesUrl": "packs/ironworm-2026-06-packages.csv"
+    },
+    {
+      "id": "solana-fakefix-2026-06",
+      "campaign": "Solana FakeFix npm and PyPI malware June 2026",
+      "url": "packs/solana-fakefix-2026-06.json"
+    },
     {
       "id": "mastra-2026-06",
       "campaign": "Mastra / easy-day-js npm compromise June 2026",
