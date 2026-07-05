@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "id": "solana-fakefix-2026-06",
+  "campaign": "Solana FakeFix npm and PyPI malware June 2026",
+  "suspiciousFilenames": [
+    "install.js"
+  ],
+  "knownSha256": {},
+  "knownSha1": {},
+  "iocs": [
+    {
+      "label": "Solana FakeFix package referenced as dependency",
+      "severity": "high",
+      "pattern": "(?im)(^|[\\s\"'/])(@solana-labs/web3\\.js|solana-cli-py|solana-mev-bot|solana-transaction-toolkit|solana-web3-core|stable-builds|nft-metadata-helper|blockchain-cli-utils|blockchain-toolkit-py|cryptocurrency-icons|solana-transaction-helper|jwt-http-client)(\\s*[:=]|[\"'@]|$)"
+    },
+    {
+      "label": "Solana FakeFix RPC endpoint",
+      "severity": "critical",
+      "pattern": "(?i)104\\.239\\.66\\.223:8899"
+    },
+    {
+      "label": "Solana FakeFix CMS loader host",
+      "severity": "critical",
+      "pattern": "(?i)77\\.90\\.185\\.225"
+    },
+    {
+      "label": "Solana FakeFix staged installer path",
+      "severity": "high",
+      "pattern": "(?i)PassWord1337/updates/main/install\\.js"
+    },
+    {
+      "label": "Solana FakeFix hardcoded wallet address",
+      "severity": "high",
+      "pattern": "(?i)D4hGg23UMWXqtWeMHU4qaEcW9X3sXAChpfn4oAdysgvN"
+    }
+  ],
+  "compositeIocs": [
+    {
+      "label": "Solana FakeFix Telegram exfiltration stealer",
+      "severity": "critical",
+      "minMatches": 3,
+      "signals": [
+        {
+          "label": "Telegram bot exfiltration",
+          "pattern": "(?i)api\\.telegram\\.org/bot"
+        },
+        {
+          "label": "Solana key material search",
+          "pattern": "(?is)(\\.config/solana|id\\.json|phantom|wallet|mnemonic|private key|secretKey)"
+        },
+        {
+          "label": "known FakeFix package family",
+          "pattern": "(?i)(@solana-labs/web3\\.js|solana-cli-py|solana-mev-bot|solana-transaction-toolkit|stable-builds)"
+        },
+        {
+          "label": "Node or Python process execution",
+          "pattern": "(?i)(child_process|subprocess\\.|execSync|os\\.system|node\\s|python\\s)"
+        }
+      ]
+    },
+    {
+      "label": "Solana FakeFix Deno Windows payload",
+      "severity": "critical",
+      "minMatches": 3,
+      "signals": [
+        {
+          "label": "known CMS loader host",
+          "pattern": "(?i)77\\.90\\.185\\.225"
+        },
+        {
+          "label": "Deno all-permission execution",
+          "pattern": "(?i)deno\\s+run\\s+-A"
+        },
+        {
+          "label": "Windows persistence or disguise",
+          "pattern": "(?i)(ChromeSetup\\.exe|conhost\\.exe|--headless|HKCU\\\\Software\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\Run)"
+        },
+        {
+          "label": "staged installer filename",
+          "pattern": "(?i)(install\\.js|aCpsuydgwbasd\\.exe)"
+        }
+      ]
+    },
+    {
+      "label": "Solana FakeFix fake MEV private-key prompt",
+      "severity": "critical",
+      "minMatches": 2,
+      "signals": [
+        {
+          "label": "fake MEV bot package",
+          "pattern": "(?i)solana-mev-bot"
+        },
+        {
+          "label": "private-key prompt lure",
+          "pattern": "(?is)(Enter your Solana private key|private key.*MEV|MEV.*private key)"
+        },
+        {
+          "label": "wallet-drain transfer path",
+          "pattern": "(?i)(sendAndConfirmTransaction|SystemProgram\\.transfer|D4hGg23UMWXqtWeMHU4qaEcW9X3sXAChpfn4oAdysgvN)"
+        }
+      ]
+    }
+  ]
+}

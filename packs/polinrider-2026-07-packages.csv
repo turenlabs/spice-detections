@@ -1,0 +1,108 @@
+Package,Version,Ecosystem
+@common-stack/generate-plugin,= 9.0.2-alpha.21 || = 9.0.2-alpha.22 || = 9.0.2-alpha.23 || = 9.0.2-alpha.24 || = 9.0.4-alpha.0 || = 9.0.4-alpha.1 || = 9.0.5-alpha.0 || = 9.0.5-alpha.1 || = 9.0.5-alpha.2 || = 9.0.5-alpha.3 || = 9.0.5-alpha.4 || = 9.0.5-alpha.5 || = 9.0.6-alpha.0 || = 9.0.6-alpha.1 || = 10.0.1-alpha.0,npm
+@modhamanish/rn-mm-template,= 1.1.3,npm
+fetch-page-assets,= 1.2.9,npm
+html-to-gutenberg,= 4.2.11,npm
+tailwind-animationbased,= 2.3.6,npm
+tailwind-animationbasis,= 2.3.3,npm
+tailwind-autoanimation,= 2.3.6,npm
+tailwind-mainanimation,= 2.3.3,npm
+tailwind-style-typography,= 0.5.8,npm
+tailwind-stylecss-typography,= 0.8.3,npm
+tailwind-typography-cssstyle,= 0.0.1-security || = 0.8.3,npm
+tailwind-typography-style,= 0.5.8,npm
+tailwind-typography-stylecss,= 0.8.3,npm
+tailwindcss-animate-style,= 1.2.5,npm
+tailwindcss-style-animate,= 1.1.6,npm
+tailwindcss-style-modify,= 0.8.3,npm
+tailwindcss-style-typography,= 0.5.6 || = 0.5.8,npm
+tailwindcss-typography-style,= 0.8.2,npm
+tailwindthml-flips,= 1.0.3 || = 1.0.4 || = 1.0.5,npm
+adxio/twig-hmvc,= dev-master,composer
+arsl/optima-class,= dev-auction-added,composer
+lambda-platform/moqup,= dev-master,composer
+olc/olc-php,= dev-fix/remove-malware,composer
+plusinfolab/logstation,= dev-dependabot/github_actions/actions/checkout-6 || = dev-dependabot/github_actions/dependabot/fetch-metadata-3.1.0 || = dev-dependabot/github_actions/ramsey/composer-install-4 || = dev-master,composer
+roberts/leads,= 2.0.0 || = 2.0.1 || = 2.0.2 || = 2.0.3 || = 2.1.0 || = 2.1.1 || = 2.1.2 || = 2.1.3 || = 2.1.4 || = dev-drewroberts/feature/test-case || = dev-main,composer
+sevenspan/code-generator,= dev-feat/livewire-version-update || = dev-feat/migration-message || = dev-feat/notification-blade-file-support || = dev-feat/resource-collection-changes || = dev-fix/data-type-mapping || = dev-fix/feedback || = dev-fix/generator-path-and-migration-table-name || = dev-hotfix/vitepress-setup || = dev-master || = dev-update/notification-modal,composer
+sevenspan/laravel-chat,= dev-ability-to-encrypt-body || = dev-feat/doc || = dev-feat/message-variables || = dev-feat/php-version-upgrade || = dev-imp/message-type || = dev-main,composer
+sevenspan/laravel-whatsapp,= dev-dev || = dev-feat/doc || = dev-imp-message-template-api || = dev-master || = dev-upgrade/laravel-9-to-10,composer
+thiio/kubernetes-php-sdk,= dev-main,composer
+github.com/almamuncsit/golang,= v0.0.0-20201007062155-5cdeaac96310,go
+github.com/amantsehay/a2sv-go-course,= v0.0.0-20240816090215-c51e2d9214d5,go
+github.com/anatoli-derese/a2sv-excercise,= v0.0.0-20240805074755-5adbbc600635,go
+github.com/backtesting-org/live-trading,= v0.0.0-20260115064332-bb2565d7c4f3,go
+github.com/Barsu5489/commerce,= v0.0.0-20231123164829-2eb351369e57,go
+github.com/barsu5489/commerce,= v0.0.0-20231123164829-2eb351369e57,go
+github.com/barsu5489/linked-list,= v0.0.0-20231201174326-3afac3ca2eb0,go
+github.com/bm-197/chill,= v0.0.0-20241216030053-8573b6044fba,go
+github.com/bm-197/golang-experiments,= v0.0.0-20241027190820-c15ae64e0db9,go
+github.com/bm-197/tessera,= v0.2.2-0.20260620182348-249a9f8e3724,go
+github.com/dexbotsdev/uniswap-v2-v3-arbitrage,= v0.0.0-20231007040503-7b0a4d1c503d,go
+github.com/dpkkmishra/caddy-auth-jwt,= v0.0.0-20210129140145-baa17c28bb69,go
+github.com/dpkkmishra/caddy-jwt-test,= v0.0.0-20210128080632-51533b48e191,go
+github.com/emmadedayo/gobasic,= v0.0.0-20220825235155-ad63d73f0d4b,go
+github.com/Faisal-Sha/gumus-task-grok,= v0.0.0-20250429214115-ea933993f32e,go
+github.com/faisal-sha/gumus-task-grok,= v0.0.0-20250429214115-ea933993f32e,go
+github.com/glacialspring/go-winsparkle,= v0.0.0-20250402002608-ba5501b8ba90,go
+github.com/glacialspring/intfloatmap,= v0.0.0-20200910185150-4f0bad56dbde,go
+github.com/glacialspring/static,= v0.0.0-20181015024211-023dc73bc332,go
+github.com/hammad-umar/go-movies-api,= v0.0.0-20230326212238-15c318053725,go
+github.com/hngi/Team-Fierce-Backend-Golang,= v0.0.0-20200612135333-4f82269a0a14,go
+github.com/hngi/team-fierce-backend-golang,= v0.0.0-20200612135333-4f82269a0a14,go
+github.com/ibitolamayowa/zurichatbot,= v0.0.0-20211001223842-c3b478092c01,go
+github.com/khunhai1/GopherTicTacToe,= v0.0.0-20250120223649-bb0aaa2267cb,go
+github.com/khunhai1/gophertictactoe,= v0.0.0-20250120223649-bb0aaa2267cb,go
+github.com/lambda-platform/dan,= v0.0.0-20221011015638-695b34fb98d4,go
+github.com/lambda-platform/ebarimt-rest-api,= v0.0.0-20230429075241-30dbb04b67f7,go
+github.com/lambda-platform/lambda,= v0.9.16-0.20260509105729-f77ea62b54e7 || = v0.9.19-0.20260525032942-0cf995e71697 || = v0.9.20-0.20260619012358-12b5a6e0c244,go
+github.com/lanvige/mixin-sdk,= v0.0.0-20190708104953-94705be98406,go
+github.com/lushiv/jwt-authentication-go-gin,= v0.0.0-20220928063611-af2bd4af5f3b,go
+github.com/MooooonStar/ant,= v0.0.0-20190107144159-65b2cc21dafc,go
+github.com/mooooonstar/ant,= v0.0.0-20190107144159-65b2cc21dafc,go
+github.com/mooooonstar/red-or-black,= v0.0.0-20191225051109-9fe850cfd716,go
+github.com/MooooonStar/testmod,= v0.0.0-20190628084721-ec3bb9be7c6e,go
+github.com/mooooonstar/testmod,= v0.0.0-20190628084721-ec3bb9be7c6e,go
+github.com/mooooonstar/toychain,= v0.0.0-20191116134239-90e0fe69e98f,go
+github.com/mprogrammer2020/snipper-bot-uniswap,= v0.0.0-20240321075156-da0461f0b224,go
+github.com/naol7/dist-task-scheduler,= v0.0.0-20241120175214-0365b36af82f,go
+github.com/natib21/go-lang,= v0.0.0-20241114084852-ed44c0923802,go
+github.com/nizigama/linux-server-monitor,= v0.0.0-20260621053908-5589422c4b0b,go
+github.com/opentoolbox-gh/golang-json-base,= v0.0.0-20230725095910-11c8fd8ed6a8,go
+github.com/PaccyC/myStrings,= v0.0.0-20240306115915-1df6cd5cd48a,go
+github.com/paccyc/mystrings,= v0.0.0-20240306115915-1df6cd5cd48a,go
+github.com/PedroCost4/LearningGo,= v0.0.0-20230918010911-3797c964773d,go
+github.com/pedrocost4/learninggo,= v0.0.0-20230918010911-3797c964773d,go
+github.com/rafiquecudjoe/go-basics,= v0.0.0-20240911151030-82e62419e8a0,go
+github.com/rajpdus/MeetingSummarizer,= v0.0.0-20230417063422-1ac2ec17a921,go
+github.com/rajpdus/meetingsummarizer,= v0.0.0-20230417063422-1ac2ec17a921,go
+github.com/re-gis/bms_api,= v0.0.0-20231012193242-a54ae8034b93,go
+github.com/re-gis/gin-commerce,= v0.0.0-20241005074154-8a71e84cc689,go
+github.com/reauheau/goaubio,= v0.0.0-20260213144826-0c7c4a5b5859,go
+github.com/rickt/gsuitemdm,= v0.0.0-20200304162828-badb764bd20e,go
+github.com/rickt/slack-weather-bot,= v0.0.0-20180704165649-55def291ce83,go
+github.com/Setsu548/Desuna-payment-platform,= v0.0.0-20240422135415-4c1a671f387f,go
+github.com/setsu548/desuna-payment-platform,= v0.0.0-20240422135415-4c1a671f387f,go
+github.com/Setsu548/Logistic,= v0.0.0-20240410002038-5b40bed74f90,go
+github.com/setsu548/logistic,= v0.0.0-20240410002038-5b40bed74f90,go
+github.com/shariyerShazan/goLang-fiber-api-prac,= v0.0.0-20251106153325-6b6a12627f77,go
+github.com/shariyershazan/golang-fiber-api-prac,= v0.0.0-20251106153325-6b6a12627f77,go
+github.com/telexintegrations/ekefan-go,= v0.0.0-20250223110202-e913aed9ff04,go
+github.com/telexintegrations/grafana-loki-monitor,= v0.0.0-20250224081948-7824bd3a0404 || = v0.0.0-20250224081948-90453c1b5135,go
+github.com/telexintegrations/telex-cve-monitor,= v0.0.0-20250222191817-7fdcc417ea83,go
+github.com/The-iyed/mangomatch,= v0.0.0-20250529141617-38db0b6ac7d4,go
+github.com/the-iyed/mangomatch,= v0.0.0-20250529141617-38db0b6ac7d4,go
+github.com/TheCodeGhinux/go-auth,= v0.0.0-20241025142614-3a060efba952,go
+github.com/thecodeghinux/go-auth,= v0.0.0-20241025142614-3a060efba952,go
+github.com/TheCodeGhinux/TaskHub,= v0.0.0-20260625023159-bb04c0745aa6,go
+github.com/thecodeghinux/taskhub,= v0.0.0-20260625023159-bb04c0745aa6,go
+github.com/TheCodeGhinux/week-win,= v0.0.0-20250223115157-0ecd30fba704,go
+github.com/thecodeghinux/week-win,= v0.0.0-20250223115157-0ecd30fba704,go
+github.com/uchebuego/towncrier,= v0.0.0-20250926095225-5fb1ceae85a4,go
+github.com/uit-21522592/golangwebdev,= v0.0.0-20231003153439-6b6a49e8cc93,go
+github.com/workshopapps/pictureminer.api,= v0.0.0-20221219200451-bc99ca334525,go
+github.com/Xpos587/git2md,= v0.0.0-20260503100027-79bdb26ca95d,go
+github.com/xpos587/git2md,= v0.0.0-20260503100027-79bdb26ca95d,go
+github.com/zainirfan13/graphql-client,= v0.0.0-20220912215956-d304e79da123,go
+github.com/zksync-sdk/zksync-sdk-go,= v0.0.0-20211119083613-0f4260a9c8ce,go
+github.com/zurichat/zc_core,= v0.0.0-20230228170444-4293c29813d5,go
