@@ -1,7 +1,13 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-07-05T15:11:41Z",
+  "updatedAt": "2026-07-09T21:04:06Z",
   "packs": [
+    {
+      "id": "injective-2026-07",
+      "campaign": "Injective Labs npm SDK compromise July 2026",
+      "url": "packs/injective-2026-07.json",
+      "affectedPackagesUrl": "packs/injective-2026-07-packages.csv"
+    },
     {
       "id": "polinrider-2026-07",
       "campaign": "PolinRider cross-ecosystem supply-chain campaign July 2026",

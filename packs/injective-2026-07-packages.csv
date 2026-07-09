@@ -1,0 +1,19 @@
+Package,Version,Ecosystem
+@injectivelabs/sdk-ts,= 1.20.21,npm
+@injectivelabs/exceptions,= 1.20.21,npm
+@injectivelabs/networks,= 1.20.21,npm
+@injectivelabs/ts-types,= 1.20.21,npm
+@injectivelabs/utils,= 1.20.21,npm
+@injectivelabs/wallet-base,= 1.20.21,npm
+@injectivelabs/wallet-core,= 1.20.21,npm
+@injectivelabs/wallet-cosmos,= 1.20.21,npm
+@injectivelabs/wallet-cosmos-strategy,= 1.20.21,npm
+@injectivelabs/wallet-cosmostation,= 1.20.21,npm
+@injectivelabs/wallet-private-key,= 1.20.21,npm
+@injectivelabs/wallet-evm,= 1.20.21,npm
+@injectivelabs/wallet-trezor,= 1.20.21,npm
+@injectivelabs/wallet-ledger,= 1.20.21,npm
+@injectivelabs/wallet-wallet-connect,= 1.20.21,npm
+@injectivelabs/wallet-magic,= 1.20.21,npm
+@injectivelabs/wallet-strategy,= 1.20.21,npm
+@injectivelabs/wallet-turnkey,= 1.20.21,npm
