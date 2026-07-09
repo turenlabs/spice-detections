@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "id": "injective-2026-07",
+  "campaign": "Injective Labs npm SDK compromise July 2026",
+  "suspiciousFilenames": [
+    "accounts-jQ1GSgaW.js",
+    "accounts-Cy0p4lLW.cjs",
+    "key-derivation-telemetry.ts"
+  ],
+  "knownSha256": {
+    "103c4e6181151c1bcfedc41506cd1815458c38375d08a8fcd9981dbe0b965ce0": "@injectivelabs/sdk-ts@1.20.21 dist/cjs/accounts-Cy0p4lLW.cjs wallet-key stealer",
+    "9a59eb454f3ca3fe91214136ee5edd417cc47a80e6f169b52099d6561944baf9": "@injectivelabs/sdk-ts@1.20.21 dist/esm/accounts-jQ1GSgaW.js wallet-key stealer"
+  },
+  "knownSha1": {
+    "e3f9da575934fe216a3109cfe2fb699a1dc398d3": "@injectivelabs/sdk-ts@1.20.21 npm tarball",
+    "0d240200d2348179c00c48d34ee6444c09512229": "@injectivelabs/exceptions@1.20.21 npm tarball",
+    "e7246be3c4bde62ee1d9b5128b44626615440265": "@injectivelabs/networks@1.20.21 npm tarball",
+    "d4cf0f9aeed5faa77f6de50dff9ac7c860ce6e53": "@injectivelabs/ts-types@1.20.21 npm tarball",
+    "bfd9481a0fa33195ccdd81cc5e897e7a336569ba": "@injectivelabs/utils@1.20.21 npm tarball",
+    "0452b8f28ec8181e3a3455855d7cd4ea1dfa2555": "@injectivelabs/wallet-base@1.20.21 npm tarball",
+    "0a2707bf6e00224114183da7f847100d5cbf0af8": "@injectivelabs/wallet-core@1.20.21 npm tarball",
+    "61f9d6fca6a4711c6256bbeab5a319eaea193698": "@injectivelabs/wallet-cosmos@1.20.21 npm tarball",
+    "9e2d7c707bac4fc6eaf956c622840a865bc4cdd1": "@injectivelabs/wallet-cosmos-strategy@1.20.21 npm tarball",
+    "5a057a27eda8964403a1d77cea86ca2f2d2a3470": "@injectivelabs/wallet-cosmostation@1.20.21 npm tarball",
+    "30bcb33d0169acaabc2b17aef1b4147927a61ab6": "@injectivelabs/wallet-private-key@1.20.21 npm tarball",
+    "9e9e64f1a68178e8783fc0f0698eefea251673e4": "@injectivelabs/wallet-evm@1.20.21 npm tarball",
+    "6b8daea4dd7ef3b854d45c2d928232d554575504": "@injectivelabs/wallet-trezor@1.20.21 npm tarball",
+    "f7c46d227f478ce9efa9d0bcdc0a65d326a53eba": "@injectivelabs/wallet-ledger@1.20.21 npm tarball",
+    "4e7742a7607b236a9741a851ead633901a5f1d99": "@injectivelabs/wallet-wallet-connect@1.20.21 npm tarball",
+    "788c5dfa5322e9cfda6fe02381583304babd30db": "@injectivelabs/wallet-magic@1.20.21 npm tarball",
+    "b7c7b667cf6e025c9259f0c8d3d25c3c03f42de5": "@injectivelabs/wallet-strategy@1.20.21 npm tarball",
+    "37dc3c1f4fb703451b3da6dc7699585322f2ba44": "@injectivelabs/wallet-turnkey@1.20.21 npm tarball"
+  },
+  "iocs": [
+    {
+      "label": "Injective SDK exfil endpoint testnet.archival.chain.grpc-web.injective.network",
+      "severity": "critical",
+      "pattern": "(?i)testnet\\.archival\\.chain\\.grpc-web\\.injective\\.network"
+    },
+    {
+      "label": "Injective SDK char-code-obfuscated exfil hostname",
+      "severity": "critical",
+      "pattern": "116\\s*,\\s*101\\s*,\\s*115\\s*,\\s*116\\s*,\\s*110\\s*,\\s*101\\s*,\\s*116\\s*,\\s*46\\s*,\\s*97\\s*,\\s*114\\s*,\\s*99\\s*,\\s*104\\s*,\\s*105\\s*,\\s*118\\s*,\\s*97\\s*,\\s*108"
+    },
+    {
+      "label": "Injective SDK injected trackKeyDerivation hook",
+      "severity": "high",
+      "pattern": "(?i)\\btrackKeyDerivation\\b"
+    },
+    {
+      "label": "Injective SDK key-derivation-telemetry payload module",
+      "severity": "high",
+      "pattern": "(?i)key-derivation-telemetry"
+    },
+    {
+      "label": "Injective SDK malicious build chunk filename",
+      "severity": "high",
+      "pattern": "(?i)accounts-(jQ1GSgaW\\.js|Cy0p4lLW\\.cjs)"
+    },
+    {
+      "label": "Injective SDK compromised package version 1.20.21 referenced",
+      "severity": "high",
+      "pattern": "(?i)@injectivelabs/(sdk-ts|exceptions|networks|ts-types|utils|wallet-(base|core|cosmos|cosmos-strategy|cosmostation|private-key|evm|trezor|ledger|wallet-connect|magic|strategy|turnkey))[^\\n]{0,24}\\b1\\.20\\.21\\b"
+    }
+  ],
+  "compositeIocs": [
+    {
+      "label": "Injective SDK key-derivation exfil beacon",
+      "severity": "critical",
+      "minMatches": 4,
+      "signals": [
+        {
+          "label": "campaign marker",
+          "pattern": "(?i)(trackKeyDerivation|key-derivation-telemetry|testnet\\.archival\\.chain\\.grpc-web|116\\s*,\\s*101\\s*,\\s*115\\s*,\\s*116\\s*,\\s*110\\s*,\\s*101\\s*,\\s*116\\s*,\\s*46\\s*,\\s*97\\s*,\\s*114\\s*,\\s*99\\s*,\\s*104)"
+        },
+        {
+          "label": "gRPC-web content-type disguise",
+          "pattern": "(?i)application/grpc-web\\+proto"
+        },
+        {
+          "label": "X-Request-Id header exfil channel",
+          "pattern": "(?i)[\"']X-Request-Id[\"']"
+        },
+        {
+          "label": "base64 payload encoding",
+          "pattern": "(?i)(toString\\([\"']base64[\"']\\)|btoa\\()"
+        },
+        {
+          "label": "wallet key derivation context",
+          "pattern": "(?i)(fromMnemonic|fromHex)"
+        },
+        {
+          "label": "queued method:value:timestamp payload format",
+          "pattern": "\\$\\{method\\}:\\$\\{value\\}:\\$\\{Date\\.now\\(\\)\\}"
+        }
+      ]
+    }
+  ]
+}
