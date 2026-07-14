@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "id": "nodemon-tslint-2026-07",
+  "campaign": "nodemon-sudo and tslint-conf npm backdoor July 2026",
+  "suspiciousFilenames": [],
+  "knownSha256": {
+    "aa9b9847e4ffd894a19ec9712848651882b0195de5f4953eef9b47791adddabf": "nodemon-sudo@3.1.16 npm package artifact",
+    "d4b7add83e5c716b5e52082f713d71ec9d7bfd93e358d500d77c2393302dd004": "tslint-conf@7.2.1 npm package artifact"
+  },
+  "knownSha1": {},
+  "iocs": [
+    {
+      "label": "nodemon-sudo backdoor Pinata gateway",
+      "severity": "critical",
+      "pattern": "(?i)peach-eligible-penguin-917\\.mypinata\\.cloud/ipfs/"
+    },
+    {
+      "label": "nodemon-sudo backdoor IPFS payload CID",
+      "severity": "critical",
+      "pattern": "(?i)bafkreigjnxn5vnn34rc5r43ajwwkmk4akqpm4awmq5gdhakgszpeqiffsu"
+    },
+    {
+      "label": "nodemon-sudo backdoor JSONKeeper dead drop",
+      "severity": "high",
+      "pattern": "(?i)jsonkeeper\\.com/b/(?:XRGF3|4NAKK)\\b"
+    }
+  ],
+  "compositeIocs": [
+    {
+      "label": "nodemon-sudo runtime remote-code loader",
+      "severity": "critical",
+      "minMatches": 3,
+      "signals": [
+        {
+          "label": "campaign Pinata gateway or CID",
+          "pattern": "(?i)(peach-eligible-penguin-917\\.mypinata\\.cloud/ipfs/|bafkreigjnxn5vnn34rc5r43ajwwkmk4akqpm4awmq5gdhakgszpeqiffsu)"
+        },
+        {
+          "label": "JSONKeeper dead drop",
+          "pattern": "(?i)jsonkeeper\\.com/b/(?:XRGF3|4NAKK)\\b"
+        },
+        {
+          "label": "campaign request header",
+          "pattern": "(?i)[\"']x-secret-key[\"']\\s*:\\s*[\"']_[\"']"
+        },
+        {
+          "label": "dynamic function construction",
+          "pattern": "(?i)\\bFunction\\s*\\("
+        },
+        {
+          "label": "Node module access passed into payload",
+          "pattern": "(?i)\\brequire\\b"
+        }
+      ]
+    }
+  ]
+}

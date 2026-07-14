@@ -1,7 +1,43 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-07-09T21:04:06Z",
+  "updatedAt": "2026-07-14T17:41:30Z",
   "packs": [
+    {
+      "id": "asyncapi-miasma-2026-07",
+      "campaign": "Miasma v3 AsyncAPI npm compromise July 2026",
+      "url": "packs/asyncapi-miasma-2026-07.json",
+      "affectedPackagesUrl": "packs/asyncapi-miasma-2026-07-packages.csv"
+    },
+    {
+      "id": "pypi-malware-2026-07",
+      "campaign": "PyPI malware advisories published July 9-14 2026",
+      "url": "packs/pypi-malware-2026-07.json",
+      "affectedPackagesUrl": "packs/pypi-malware-2026-07-packages.csv"
+    },
+    {
+      "id": "npm-malware-2026-07",
+      "campaign": "npm malware advisories published July 9-14 2026",
+      "url": "packs/npm-malware-2026-07.json",
+      "affectedPackagesUrl": "packs/npm-malware-2026-07-packages.csv"
+    },
+    {
+      "id": "ironworm-jscrambler-2026-07",
+      "campaign": "IronWorm Jscrambler npm compromise July 2026",
+      "url": "packs/ironworm-jscrambler-2026-07.json",
+      "affectedPackagesUrl": "packs/ironworm-jscrambler-2026-07-packages.csv"
+    },
+    {
+      "id": "nodemon-tslint-2026-07",
+      "campaign": "nodemon-sudo and tslint-conf npm backdoor July 2026",
+      "url": "packs/nodemon-tslint-2026-07.json",
+      "affectedPackagesUrl": "packs/nodemon-tslint-2026-07-packages.csv"
+    },
+    {
+      "id": "braintree-nuget-2026-07",
+      "campaign": "Braintree.Net NuGet payment-data skimmer July 2026",
+      "url": "packs/braintree-nuget-2026-07.json",
+      "affectedPackagesUrl": "packs/braintree-nuget-2026-07-packages.csv"
+    },
     {
       "id": "injective-2026-07",
       "campaign": "Injective Labs npm SDK compromise July 2026",

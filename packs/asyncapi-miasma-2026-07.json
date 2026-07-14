@@ -1,0 +1,107 @@
+{
+  "schemaVersion": 1,
+  "id": "asyncapi-miasma-2026-07",
+  "campaign": "Miasma v3 AsyncAPI npm compromise July 2026",
+  "suspiciousFilenames": [],
+  "knownSha256": {
+    "34014776d3d3ff11bc4439b02fd7ac0f02a887eb3a052eeafff236e2f6db8ad1": "@asyncapi/generator-helpers@1.1.1 npm tarball",
+    "082d733db0687dcd768104972b065d4b58cb1e6043688c6c20fa3702337f36ab": "@asyncapi/generator-components@0.7.1 npm tarball",
+    "bfaeb987faa6de2b5a5eb63b1233d055215b09b0349a9394f2175fd7cdf385e4": "@asyncapi/generator@3.3.1 npm tarball",
+    "9b2e65db653ca8575c9b10eefb9a80c6006404812c2ec212bf5675e3c690233b": "@asyncapi/specs@6.11.2 npm tarball",
+    "d425e4583cc6185d41e95c45eda00550045a5d1919b9a012236a4520d009dbd7": "@asyncapi/specs@6.11.2-alpha.1 npm tarball"
+  },
+  "knownSha1": {},
+  "iocs": [
+    {
+      "label": "Miasma v3 IPFS payload CID",
+      "severity": "critical",
+      "pattern": "(?i)QmQobZSp1wRPrpSEQ56qnyq7ecZh5Bg5k1fnjt4SUwwHb9"
+    },
+    {
+      "label": "Miasma v3 command-and-control address",
+      "severity": "critical",
+      "pattern": "\\b85\\.137\\.53\\.71(?::(?:8080|8081|8091))?\\b"
+    },
+    {
+      "label": "Miasma v3 spawn-chain header",
+      "severity": "critical",
+      "pattern": "(?i)X-Miasma-Spawn-Chain"
+    },
+    {
+      "label": "Miasma v3 train identifier",
+      "severity": "high",
+      "pattern": "(?i)\\bmiasma-train-p1\\b"
+    },
+    {
+      "label": "Miasma v3 DNS service-discovery record",
+      "severity": "high",
+      "pattern": "(?i)_miasma\\._tcp"
+    },
+    {
+      "label": "Miasma v3 Ethereum registry contract",
+      "severity": "high",
+      "pattern": "(?i)0x12c37A86a0Ed0beBe5d1d6a43E42f07860eAc710"
+    },
+    {
+      "label": "Miasma v3 Node auto-update persistence marker",
+      "severity": "high",
+      "pattern": "(?i)###\\s*Node Auto-Update Script\\s*###"
+    }
+  ],
+  "compositeIocs": [
+    {
+      "label": "Miasma v3 persistent NodeJS runtime",
+      "severity": "critical",
+      "minMatches": 3,
+      "signals": [
+        {
+          "label": "campaign identity",
+          "pattern": "(?i)(miasma-train-p1|X-Miasma-Spawn-Chain|QmQobZSp1wRPrpSEQ56qnyq7ecZh5Bg5k1fnjt4SUwwHb9)"
+        },
+        {
+          "label": "persistent sync script",
+          "pattern": "(?i)(?:\\.local/share|Library/Application Support|LOCALAPPDATA)[\\\\/]+NodeJS[\\\\/]+sync\\.js"
+        },
+        {
+          "label": "Miasma process lock",
+          "pattern": "(?i)\\.config[\\\\/]+\\.miasma[\\\\/]+run[\\\\/]+node\\.lock"
+        },
+        {
+          "label": "systemd persistence unit",
+          "pattern": "(?i)miasma-monitor\\.service"
+        },
+        {
+          "label": "shell profile persistence marker",
+          "pattern": "(?i)###\\s*Node Auto-Update Script\\s*###"
+        }
+      ]
+    },
+    {
+      "label": "Miasma v3 command-and-control protocol",
+      "severity": "critical",
+      "minMatches": 3,
+      "signals": [
+        {
+          "label": "C2 host or ports",
+          "pattern": "\\b85\\.137\\.53\\.71(?::(?:8080|8081|8091))?\\b"
+        },
+        {
+          "label": "spawn-chain tracking",
+          "pattern": "(?i)X-Miasma-Spawn-Chain"
+        },
+        {
+          "label": "DNS service discovery",
+          "pattern": "(?i)_miasma\\._tcp"
+        },
+        {
+          "label": "IPFS payload retrieval",
+          "pattern": "(?i)QmQobZSp1wRPrpSEQ56qnyq7ecZh5Bg5k1fnjt4SUwwHb9"
+        },
+        {
+          "label": "on-chain endpoint discovery",
+          "pattern": "(?i)0x12c37A86a0Ed0beBe5d1d6a43E42f07860eAc710"
+        }
+      ]
+    }
+  ]
+}

@@ -2,10 +2,7 @@
   "schemaVersion": 1,
   "id": "ironworm-2026-06",
   "campaign": "IronWorm npm compromise June 2026",
-  "suspiciousFilenames": [
-    "setup",
-    "precheck"
-  ],
+  "suspiciousFilenames": [],
   "knownSha256": {},
   "knownSha1": {},
   "iocs": [
@@ -33,7 +30,7 @@
       "signals": [
         {
           "label": "known IronWorm package family",
-          "pattern": "(?i)(@?weavedb|warp-contracts|redstone-|arlocal|arweave)"
+          "pattern": "(?i)(weavedb(?:-[a-z0-9-]+)?|wdb-(?:cli|core|sdk)|cwao(?:-(?:tools|units))?|arnext(?:-arkb)?|create-arnext-app|warp-contracts-plugin-deploy-test|(?:atomic-notes|fpjson-lang|test-weavedb-sdk|test-ajs|testnpmnmp|arjson|aonote|hbsig|monade|roidjs|zkjson|ai3|wao))"
         },
         {
           "label": "preinstall tools/setup hook",
