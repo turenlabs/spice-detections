@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "id": "ironworm-jscrambler-2026-07",
+  "campaign": "IronWorm Jscrambler npm compromise July 2026",
+  "suspiciousFilenames": [],
+  "knownSha256": {},
+  "knownSha1": {},
+  "iocs": [
+    {
+      "label": "IronWorm CSI container magic in Jscrambler payload",
+      "severity": "critical",
+      "pattern": "\\x1bCSI\\x01\\x03\\x00"
+    },
+    {
+      "label": "IronWorm Jscrambler command-and-control address",
+      "severity": "critical",
+      "pattern": "\\b(?:37\\.27\\.122\\.124|57\\.128\\.246\\.79)\\b"
+    }
+  ],
+  "compositeIocs": [
+    {
+      "label": "IronWorm Jscrambler preinstall loader",
+      "severity": "critical",
+      "minMatches": 3,
+      "signals": [
+        {
+          "label": "Jscrambler package identity",
+          "pattern": "(?i)[\"']name[\"']\\s*:\\s*[\"']jscrambler[\"']"
+        },
+        {
+          "label": "affected preinstall release",
+          "pattern": "(?i)[\"']version[\"']\\s*:\\s*[\"'](?:8\\.14\\.0|8\\.16\\.0|8\\.17\\.0)[\"']"
+        },
+        {
+          "label": "preinstall setup hook",
+          "pattern": "(?i)[\"']preinstall[\"']\\s*:\\s*[\"']node\\s+dist/setup\\.js[\"']"
+        }
+      ]
+    },
+    {
+      "label": "IronWorm Jscrambler import-time loader",
+      "severity": "critical",
+      "minMatches": 3,
+      "signals": [
+        {
+          "label": "Jscrambler package identity",
+          "pattern": "(?i)[\"']name[\"']\\s*:\\s*[\"']jscrambler[\"']"
+        },
+        {
+          "label": "affected import-time release",
+          "pattern": "(?i)[\"']version[\"']\\s*:\\s*[\"'](?:8\\.18\\.0|8\\.20\\.0)[\"']"
+        },
+        {
+          "label": "self-dependency on compromised line",
+          "pattern": "(?i)[\"']jscrambler[\"']\\s*:\\s*[\"']\\^8\\.17\\.0[\"']"
+        }
+      ]
+    }
+  ]
+}

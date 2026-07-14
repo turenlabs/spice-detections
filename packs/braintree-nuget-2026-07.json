@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "id": "braintree-nuget-2026-07",
+  "campaign": "Braintree.Net NuGet payment-data skimmer July 2026",
+  "suspiciousFilenames": [],
+  "knownSha256": {},
+  "knownSha1": {},
+  "iocs": [
+    {
+      "label": "Braintree.Net skimmer command-and-control host",
+      "severity": "critical",
+      "pattern": "(?i)api\\.348672-shakepay\\.com"
+    },
+    {
+      "label": "Braintree.Net skimmer API key",
+      "severity": "critical",
+      "pattern": "2523-5235-8564-2683-2386"
+    },
+    {
+      "label": "Braintree.Net skimmer endpoint-obfuscation key",
+      "severity": "critical",
+      "pattern": "(?i)4A7B2C5D1E8F3A6B9C0D5E2F7A4B1C8D"
+    },
+    {
+      "label": "Braintree.Net skimmer obfuscated endpoint blob",
+      "severity": "critical",
+      "pattern": "(?i)220F582D6DB51544FD7D3701497F24BB7D49012E76EE510EEC6C2701192471A22B0B45727FE15B07E579374C09646EE83A145E29"
+    },
+    {
+      "label": "Braintree.Net injected reporting classes",
+      "severity": "high",
+      "pattern": "(?i)(Braintree\\.(?:CardOperationLogger|DependencyInjectorLoader)|DependencyInjector\\.Core\\.(?:Reporting\\.(?:EndpointObfuscator|AnalyticsReporter)|AutoInitializer))"
+    }
+  ],
+  "compositeIocs": [
+    {
+      "label": "Braintree.Net payment-data exfiltration channel",
+      "severity": "critical",
+      "minMatches": 3,
+      "signals": [
+        {
+          "label": "campaign C2",
+          "pattern": "(?i)api\\.348672-shakepay\\.com"
+        },
+        {
+          "label": "campaign API key header",
+          "pattern": "(?i)X-Api-Key[^\\n]{0,48}2523-5235-8564-2683-2386"
+        },
+        {
+          "label": "card or account exfiltration route",
+          "pattern": "(?i)/api/(?:card|account|analytics/report)\\b"
+        },
+        {
+          "label": "card operation logger",
+          "pattern": "(?i)Braintree\\.CardOperationLogger"
+        },
+        {
+          "label": "endpoint decoder",
+          "pattern": "(?i)(EndpointObfuscator|4A7B2C5D1E8F3A6B9C0D5E2F7A4B1C8D)"
+        }
+      ]
+    },
+    {
+      "label": "Braintree.Net injected dependency loader",
+      "severity": "critical",
+      "minMatches": 3,
+      "signals": [
+        {
+          "label": "Braintree loader",
+          "pattern": "(?i)Braintree\\.DependencyInjectorLoader"
+        },
+        {
+          "label": "auto initializer",
+          "pattern": "(?i)DependencyInjector\\.Core\\.AutoInitializer"
+        },
+        {
+          "label": "analytics reporter",
+          "pattern": "(?i)DependencyInjector\\.Core\\.Reporting\\.AnalyticsReporter"
+        },
+        {
+          "label": "endpoint obfuscator",
+          "pattern": "(?i)DependencyInjector\\.Core\\.Reporting\\.EndpointObfuscator"
+        },
+        {
+          "label": "campaign API key",
+          "pattern": "2523-5235-8564-2683-2386"
+        }
+      ]
+    }
+  ]
+}

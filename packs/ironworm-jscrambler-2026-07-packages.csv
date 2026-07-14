@@ -1,0 +1,10 @@
+Package,Version,Ecosystem
+grunt-jscrambler,= 8.5.2,npm
+gulp-jscrambler,= 8.6.2,npm
+jscrambler,= 8.14.0,npm
+jscrambler,= 8.16.0,npm
+jscrambler,= 8.17.0,npm
+jscrambler,= 8.18.0,npm
+jscrambler,= 8.20.0,npm
+jscrambler-metro-plugin,= 9.0.2,npm
+jscrambler-webpack-plugin,= 8.6.2,npm

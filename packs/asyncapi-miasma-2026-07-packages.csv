@@ -1,0 +1,6 @@
+Package,Version,Ecosystem
+@asyncapi/generator,= 3.3.1,npm
+@asyncapi/generator-components,= 0.7.1,npm
+@asyncapi/generator-helpers,= 1.1.1,npm
+@asyncapi/specs,= 6.11.2,npm
+@asyncapi/specs,= 6.11.2-alpha.1,npm
