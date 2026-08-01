@@ -1,7 +1,42 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-07-14T17:41:30Z",
+  "updatedAt": "2026-08-01T14:33:43Z",
   "packs": [
+    {
+      "id": "npm-malware-2026-07-late",
+      "campaign": "Late-July 2026 npm malware advisories",
+      "url": "packs/npm-malware-2026-07-late.json",
+      "affectedPackagesUrl": "packs/npm-malware-2026-07-late-packages.csv"
+    },
+    {
+      "id": "joyfill-2026-07",
+      "campaign": "Joyfill npm 2773 beta DEV#POPPER compromise July 2026",
+      "url": "packs/joyfill-2026-07.json",
+      "affectedPackagesUrl": "packs/joyfill-2026-07-packages.csv"
+    },
+    {
+      "id": "pypi-malware-2026-07-late",
+      "campaign": "Late-July 2026 PyPI malware advisories and credential stealers",
+      "url": "packs/pypi-malware-2026-07-late.json",
+      "affectedPackagesUrl": "packs/pypi-malware-2026-07-late-packages.csv"
+    },
+    {
+      "id": "nuget-pepesoft-2026-07",
+      "campaign": "Pepesoft NuGet DotnetTool game-cheat campaign July 2026",
+      "url": "packs/nuget-pepesoft-2026-07.json",
+      "affectedPackagesUrl": "packs/nuget-pepesoft-2026-07-packages.csv"
+    },
+    {
+      "id": "nuget-newtonsoftt-2026-07",
+      "campaign": "Newtonsoftt.Json.Net Digitain game-rigging NuGet typosquat July 2026",
+      "url": "packs/nuget-newtonsoftt-2026-07.json",
+      "affectedPackagesUrl": "packs/nuget-newtonsoftt-2026-07-packages.csv"
+    },
+    {
+      "id": "npm-alibaba-2026-07",
+      "campaign": "Alibaba-targeted distributed npm RAT package cluster July 2026",
+      "url": "packs/npm-alibaba-2026-07.json"
+    },
     {
       "id": "asyncapi-miasma-2026-07",
       "campaign": "Miasma v3 AsyncAPI npm compromise July 2026",

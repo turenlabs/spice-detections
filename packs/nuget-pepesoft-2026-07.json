@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "id": "nuget-pepesoft-2026-07",
+  "campaign": "Pepesoft NuGet DotnetTool game-cheat campaign July 2026",
+  "suspiciousFilenames": [
+    "pepesoft.exe",
+    "gtaobus.pyc"
+  ],
+  "knownSha256": {
+    "d5385526f2f3e52c7d96087611c6cd4e479bf61828400efdb3ca09406d981609": "Pepesoft Albion downloader assembly",
+    "9a2091e6625fc11cfd8f39c17aa271604e66322ee045028946274b988103e35b": "Pepesoft Amazing RP downloader assembly",
+    "900ddb81d27e03967209fee4d17d13deb68eef0e1f10936eb520ca10575cb49e": "Pepesoft Calculator downloader assembly",
+    "ab58a90eb3682c6dc3389cd700a64f68a19c0dac3d0fa8e3df97ae041f96d4e1": "Pepesoft GrandRP downloader assembly",
+    "e6e1049158ceb1971c61388349c81fa6047a7aecb4ff2089ef54a50dcc35dbc0": "Pepesoft GTA5RP downloader assembly",
+    "d9f7ca9f93a7d188d51db308877b15d0beae932ca0bf4705384fbedf54b454c1": "Pepesoft Lineage 2 downloader assembly",
+    "4d13f1136b13c871c65141b77ec7208488334ac4be511800196adcd328666305": "Pepesoft Majestic downloader assembly",
+    "011926de3d0cc2b970627b9bf0de003e731f8576602dff756d2ab54a9de61972": "Pepesoft RMRP downloader assembly",
+    "79c09e1ffb4804c14ff27d41ec08d4390455c92d65717be0aeeec2697297d76a": "Pepesoft Russian Fishing 4 downloader assembly",
+    "5f3a9ebf7039097b3cdbca8609b5b68af07eeb1dbf716ba2817a97fc7c543854": "Pepesoft Throne downloader assembly",
+    "23808e7638f7a00b1ef9b9f4ca524f8a46cf63be6f6b79fec8e4a3fd1cc82a1e": "Pepesoft Trigger downloader assembly",
+    "e8c2618565aa31d7ffe909ebc99040bafcc0ea8df7f5d92fa673bb7ffacb14c9": "Pepesoft Amazing RP payload",
+    "6eefe9d5f030d403c72bd4e4caf5bbb9dbc2bd5e15ebb07de153494f458e5eb9": "Pepesoft GrandRP payload",
+    "8ab256dd839aec6638cd46374f4a6664e534b9341bbcdfd9b763e5a27c51ddb7": "Pepesoft GTA5RP payload",
+    "6c1f828e4d8395dde8293868c65ba8d86b3b9672ebbbb16e932624706d37d832": "Pepesoft Lineage 2 payload",
+    "6cbd4bc491deb11040e2b2f91b0b4e129af551a802fc78cb42e0e985297ef44c": "Pepesoft Majestic payload",
+    "5d9843126db4223dc2a8a9cd4a627286fe1a6345e33b28e9c98b5fe56fe89da6": "Pepesoft RMRP payload",
+    "c9f3e7766dbe728d84a1243447faa5f5eba0645bf13089074d128ea7663e7f5b": "Pepesoft Russian Fishing 4 payload",
+    "a2a5e473dba85959b21b7e8a184bc255d5f2dacdf7411b91d212fb1217d2518b": "Pepesoft Trigger payload",
+    "567952daf0ab7b36b017aac9963791188dea0fbf2e99c7cc6f6652ee540f4840": "Pepesoft Albion gtaobus.pyc",
+    "cc853b3e4504c890d275ac2327f18acd7e4c5b99ca056181f3f5694781f2cf45": "Pepesoft Calculator gtaobus.pyc",
+    "476c6f36a22156e53548a87291989a21d6c905dcbd9e1bf68ff5bc12e5c8bb07": "Pepesoft Throne gtaobus.pyc"
+  },
+  "knownSha1": {},
+  "iocs": [
+    {
+      "label": "Pepesoft staging repository",
+      "severity": "critical",
+      "pattern": "(?i)(?:github\\.com|huggingface\\.co)/[^\\s\"']*pepegit666"
+    },
+    {
+      "label": "Pepesoft second-stage executable",
+      "severity": "critical",
+      "pattern": "(?i)pepesoft\\.exe"
+    },
+    {
+      "label": "Pepesoft configuration Worker",
+      "severity": "critical",
+      "pattern": "(?i)calm-voice-9797\\.888c888x888\\.workers\\.dev"
+    },
+    {
+      "label": "Pepesoft Selectel fallback",
+      "severity": "high",
+      "pattern": "(?i)s3\\.ru-3\\.storage\\.selcloud\\.ru"
+    },
+    {
+      "label": "Pepesoft operator endpoints",
+      "severity": "high",
+      "pattern": "(?i)(?:bots\\.pepesoft\\.ru|t\\.me/pepesoft777)"
+    },
+    {
+      "label": "Pepesoft shared process mutex",
+      "severity": "critical",
+      "pattern": "(?i)5BD61028-3D9C-4B4E-AD45-CA4F1B35D0F4"
+    },
+    {
+      "label": "Pepesoft inherited AWS-style key",
+      "severity": "critical",
+      "pattern": "(?i)(?:5bd610283d9c4b4ead45ca4f1b35d0f4|21b4be57bd3743738393f44d9464e212)"
+    },
+    {
+      "label": "Pepesoft DNS-over-HTTPS resolver",
+      "severity": "high",
+      "pattern": "(?i)dns\\.google/resolve"
+    },
+    {
+      "label": "Pepesoft elevation clock resync",
+      "severity": "high",
+      "pattern": "(?i)(?:w32tm\\s+/resync|Start-Service\\s+w32time)"
+    },
+    {
+      "label": "Pepesoft cloud telemetry and control payload",
+      "severity": "critical",
+      "minMatches": 3,
+      "signals": [
+        {
+          "label": "payload executable",
+          "pattern": "(?i)pepesoft\\.exe"
+        },
+        {
+          "label": "Google Sheets telemetry",
+          "pattern": "(?i)(?:gspread|Google Sheets|service_account\\.Credentials)"
+        },
+        {
+          "label": "Telegram control channel",
+          "pattern": "(?i)(?:aiogram|pepesoft777|/screen|/pscreen)"
+        },
+        {
+          "label": "operator cloud configuration",
+          "pattern": "(?i)(?:AWS_CONFIG_KEY|calm-voice-9797|selcloud)"
+        },
+        {
+          "label": "shared host identity",
+          "pattern": "(?i)(?:5bd610283d9c4b4ead45ca4f1b35d0f4|Global\\\\\\{5BD61028)"
+        }
+      ]
+    }
+  ]
+}

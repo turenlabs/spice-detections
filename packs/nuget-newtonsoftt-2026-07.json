@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 1,
+  "id": "nuget-newtonsoftt-2026-07",
+  "campaign": "Newtonsoftt.Json.Net Digitain game-rigging NuGet typosquat July 2026",
+  "suspiciousFilenames": [],
+  "knownSha256": {},
+  "knownSha1": {},
+  "iocs": [
+    {
+      "label": "Newtonsoftt.Json.Net typosquat identity",
+      "severity": "critical",
+      "pattern": "(?i)Newtonsoftt\\.Json\\.Net"
+    },
+    {
+      "label": "Newtonsoftt.Json.Net game-rigging C2",
+      "severity": "critical",
+      "pattern": "\\b185\\.126\\.237\\.64:5341\\b"
+    },
+    {
+      "label": "Newtonsoftt.Json.Net telemetry API key",
+      "severity": "critical",
+      "pattern": "(?i)X-Seq-ApiKey[^\\n]{0,64}theperfectheist2025"
+    },
+    {
+      "label": "Newtonsoftt.Json.Net injected assemblies",
+      "severity": "critical",
+      "pattern": "(?i)(?:Newtonsoft\\.Values\\.Net\\.dll|Newtonsoft\\.Json\\.net\\.dll)"
+    },
+    {
+      "label": "Newtonsoftt.Json.Net Digitain target method",
+      "severity": "critical",
+      "pattern": "(?i)Digitain\\.FG\\.SharedCrash\\.GameLogic\\.SharedCrashRules\\.GenerateGameResult"
+    },
+    {
+      "label": "Newtonsoftt.Json.Net fraud target metadata",
+      "severity": "high",
+      "pattern": "(?i)(?:BetOnGames|FG-Crash|tfs\\.digitain\\.tools)"
+    },
+    {
+      "label": "Newtonsoftt.Json.Net Harmony patch marker",
+      "severity": "high",
+      "pattern": "(?i)com\\.example\\.harmony"
+    }
+  ],
+  "compositeIocs": [
+    {
+      "label": "Newtonsoftt.Json.Net targeted game-rigging implant",
+      "severity": "critical",
+      "minMatches": 3,
+      "signals": [
+        {
+          "label": "typosquat package identity",
+          "pattern": "(?i)Newtonsoftt\\.Json\\.Net"
+        },
+        {
+          "label": "Digitain game target",
+          "pattern": "(?i)(?:Digitain\\.FG\\.SharedCrash|BetOnGames|FG-Crash)"
+        },
+        {
+          "label": "patched game method",
+          "pattern": "(?i)GenerateGameResult"
+        },
+        {
+          "label": "runtime patching",
+          "pattern": "(?i)(?:HarmonyLib|com\\.example\\.harmony)"
+        }
+      ]
+    },
+    {
+      "label": "Newtonsoftt.Json.Net result exfiltration",
+      "severity": "critical",
+      "minMatches": 3,
+      "signals": [
+        {
+          "label": "game-rigging package",
+          "pattern": "(?i)(?:Newtonsoftt\\.Json\\.Net|GenerateGameResult)"
+        },
+        {
+          "label": "Seq-shaped C2",
+          "pattern": "\\b185\\.126\\.237\\.64:5341\\b"
+        },
+        {
+          "label": "exfiltration header",
+          "pattern": "(?i)X-Seq-ApiKey[^\\n]{0,64}theperfectheist2025"
+        },
+        {
+          "label": "raw event endpoint",
+          "pattern": "(?i)/api/events/raw"
+        }
+      ]
+    }
+  ]
+}

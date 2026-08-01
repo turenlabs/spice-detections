@@ -1,0 +1,137 @@
+{
+  "schemaVersion": 1,
+  "id": "joyfill-2026-07",
+  "campaign": "Joyfill npm 2773 beta DEV#POPPER compromise July 2026",
+  "suspiciousFilenames": [],
+  "knownSha256": {
+    "adc4af90540d33cd1e98f44b51482ae9250fbeb97d6f8d7841c81b618cb2c6e6": "@joyfill/layouts@0.1.2-2773.beta.0 npm archive",
+    "8e8b90dedd456ded0c5748119836e1ca1066112bc569c1b41ca70eb931d1d4dc": "@joyfill/layouts compromised CommonJS bundle",
+    "5f6a92006ca2ea4b464d66fb41af777edce7296939a7c6ee491e2b3cbfe09848": "@joyfill/layouts compromised ESM bundle",
+    "bcc93dc55bc7daedf4ca57254f0e7a7f1c40e09851eab98fe10cde801982db17": "@joyfill/components@4.0.0-rc24-2773-beta.4 npm archive",
+    "1352ad22c99983d91e600348b7cbf58235131b1ee34cea9f09623206d5b7dea7": "@joyfill/components compromised index.js bundle",
+    "67c6ef602cc850f10d935fee53fa40440df841adf081563bf4fc2631a71249ce": "@joyfill/components compromised index.esm.js bundle",
+    "c5742ea1875ecd2360022624149994909cd0546e221e4203dffd01f48de45469": "@joyfill/components compromised joyfill.min.js bundle",
+    "cb46f12d70824ea24ed1f8bcf45bf3f86680e02a9089aafc03b27f691be57be3": "Joyfill first-stage blockchain loader",
+    "f452f9cfa539f4a1fe25187a99a484391290d5dbaa422ba455edf6b04f81b7d1": "Joyfill decoded tier-two resolver",
+    "78f0de8682e0e894a5784eb7e95db4da6088f528918ca3107dd1e76f80a561d8": "Joyfill detached boot loader",
+    "ae7565109fd01b88d82acf7f73ab20709cbc2c9f26fdea13e429ccc87a55d4fb": "Joyfill decoded detached bootstrap",
+    "26351aed0397158d3a3b8cc8fd3047d4c015d264c9895f10f20f1521b974ed18": "Joyfill final Socket.IO RAT",
+    "26e679eaf1e9baeb7c55eb48db482301171d4d26e1728544b23734a90dc70e1b": "Joyfill preserved boot capture",
+    "2cfede38fb121a71a2f3607474aa8cd588a99f51b37e5e6f0d8cb789fa275032": "Joyfill preserved boot capture",
+    "36ff00b45e67baa7e3674b0c80f48e88737264c61e5c6b3b091200972de8157c": "Joyfill preserved Python credential stealer"
+  },
+  "knownSha1": {},
+  "iocs": [
+    {
+      "label": "Joyfill DEV#POPPER campaign marker",
+      "severity": "critical",
+      "pattern": "(?i)\\bA9-0135-3\\b"
+    },
+    {
+      "label": "Joyfill detached boot endpoint",
+      "severity": "critical",
+      "pattern": "(?i)23\\.27\\.13\\.43/\\$/boot"
+    },
+    {
+      "label": "Joyfill Sec-V request marker",
+      "severity": "critical",
+      "pattern": "(?i)Sec-V\\s*:\\s*A9-0135-3"
+    },
+    {
+      "label": "Joyfill Socket.IO RAT command set",
+      "severity": "critical",
+      "pattern": "(?i)\\bss_(?:info|ip|cb|upf|upd|dir|fcd|stop|inz|inzx|connect|eval|eval64|exit|exit_f)\\b"
+    },
+    {
+      "label": "Joyfill developer-tool persistence marker",
+      "severity": "critical",
+      "pattern": "(?i)/\\*(?:C250617A|C250618A|C250619A|C250620A|C260511A|C260512A|RS260605)\\*/"
+    },
+    {
+      "label": "Joyfill blockchain resolver infrastructure",
+      "severity": "high",
+      "pattern": "(?i)(api\\.trongrid\\.io|fullnode\\.mainnet\\.aptoslabs\\.com|bsc-dataseed\\.binance\\.org|bsc-rpc\\.publicnode\\.com)"
+    },
+    {
+      "label": "Joyfill downstream command infrastructure",
+      "severity": "critical",
+      "pattern": "\\b(?:166\\.88\\.134\\.62|23\\.27\\.13\\.43|198\\.105\\.127\\.210|23\\.27\\.202\\.27)\\b"
+    },
+    {
+      "label": "Joyfill Python stealer staging path",
+      "severity": "high",
+      "pattern": "(?i)(?:%USERPROFILE%|/tmp)/\\.npm"
+    }
+  ],
+  "compositeIocs": [
+    {
+      "label": "Joyfill import-time RAT loader",
+      "severity": "critical",
+      "minMatches": 3,
+      "signals": [
+        {
+          "label": "Joyfill package identity",
+          "pattern": "(?i)@joyfill/(?:layouts|components)"
+        },
+        {
+          "label": "2773 prerelease marker",
+          "pattern": "(?i)2773"
+        },
+        {
+          "label": "Node module exposure",
+          "pattern": "(?i)global\\.r\\s*=\\s*require"
+        },
+        {
+          "label": "dynamic resolver execution",
+          "pattern": "(?i)Function\\s*\\("
+        }
+      ]
+    },
+    {
+      "label": "Joyfill detached boot chain",
+      "severity": "critical",
+      "minMatches": 3,
+      "signals": [
+        {
+          "label": "detached boot request",
+          "pattern": "(?i)23\\.27\\.13\\.43/\\$/boot"
+        },
+        {
+          "label": "campaign request header",
+          "pattern": "(?i)Sec-V\\s*:\\s*A9-0135-3"
+        },
+        {
+          "label": "detached Node child",
+          "pattern": "(?i)child_process\\.spawn"
+        },
+        {
+          "label": "detached execution flag",
+          "pattern": "(?i)detached\\s*:\\s*true"
+        }
+      ]
+    },
+    {
+      "label": "Joyfill developer-tool persistence",
+      "severity": "critical",
+      "minMatches": 3,
+      "signals": [
+        {
+          "label": "persistence injection marker",
+          "pattern": "(?i)(?:RS260605|C260512A|C250617A)"
+        },
+        {
+          "label": "developer tool target",
+          "pattern": "(?i)(@vscode/deviceid|node_modules/npm/lib/cli\\.js|resources/app/main\\.js)"
+        },
+        {
+          "label": "RAT command family",
+          "pattern": "(?i)\\bss_(?:eval|eval64|upf|upd|dir|connect)\\b"
+        },
+        {
+          "label": "injection status marker",
+          "pattern": "(?i)(already injected|injected)"
+        }
+      ]
+    }
+  ]
+}

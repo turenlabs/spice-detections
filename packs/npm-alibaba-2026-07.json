@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 1,
+  "id": "npm-alibaba-2026-07",
+  "campaign": "Alibaba-targeted distributed npm RAT package cluster July 2026",
+  "suspiciousFilenames": [],
+  "knownSha256": {
+    "84a6ccaaab1596139d28e822f40cc99c68d337d4c81d1c6d9692c1d6bb22e4af": "Alibaba campaign malicious preferences.json",
+    "6044974c633b3a319c31bb32110411520c425e89722a64806528553227e7a50a": "Alibaba campaign setting.js loader",
+    "0910ecfa0497383ef2f2540855341a380df89224ff71da94b4c21689fd66f62e3": "Alibaba campaign macOS aone-cli.js payload",
+    "b8b81af76163bdcc5b4f7d8fe6795f164991f8a62678c971db031b9e90a27813": "Alibaba campaign Linux aone-cli payload",
+    "ef9a1896eeaae929800eade768276e2240ef252d26d0d96c1950a1a5e1aadb34": "Alibaba campaign Windows aone-cli payload",
+    "e5d8350f1540fe91145dc262c455bca7748ad97dafb2d9facd5adebed9f66d2d": "Alibaba campaign dependency archive",
+    "41957bd0ba2d9c07af2e069f10780fdf6b2102c065bebe0db2136dfe07d67a28": "Alibaba campaign crypto.js loader",
+    "33b58598eb317553942e27545982d4c25ce6120eae10e42393746eb0e02ecae9": "Alibaba campaign aone-kit update payload"
+  },
+  "knownSha1": {},
+  "iocs": [
+    {
+      "label": "Alibaba campaign configuration dead drop",
+      "severity": "critical",
+      "pattern": "(?i)(?:raw\\.githubusercontent\\.com/smi1e2u/smart-config-manager|\\.cloud-preferences\\.json)"
+    },
+    {
+      "label": "Alibaba campaign payload staging",
+      "severity": "critical",
+      "pattern": "(?i)(?:aone-cli-next\\.oss-cn-beijing\\.aliyuncs\\.com|aone-ai-cli\\.oss-cn-beijing\\.aliyuncs\\.com|aone-kit\\.oss-cn-beijing\\.aliyuncs\\.com)"
+    },
+    {
+      "label": "Alibaba campaign command-and-control",
+      "severity": "critical",
+      "pattern": "(?i)(?:xemzqli2vu\\.ai-app\\.pub|diamond-cli-znsxphqell\\.cn-shanghai\\.fcapp\\.run)"
+    },
+    {
+      "label": "Alibaba campaign injection marker",
+      "severity": "critical",
+      "pattern": "(?i)#\\s*__INJECT_MARKER__"
+    },
+    {
+      "label": "Alibaba campaign host identifier",
+      "severity": "high",
+      "pattern": "(?i)ROBOT_UID[^\\n]{0,64}3201d407b7899a12d6d439950511c6a5"
+    },
+    {
+      "label": "Alibaba campaign VM escape loader",
+      "severity": "critical",
+      "pattern": "(?i)items\\.constructor\\.constructor"
+    },
+    {
+      "label": "Alibaba campaign payload names",
+      "severity": "high",
+      "pattern": "(?i)(?:aone-cli(?:-deps)?|crypto\\.js|app\\.asar)"
+    }
+  ],
+  "compositeIocs": [
+    {
+      "label": "Alibaba distributed npm loader",
+      "severity": "critical",
+      "minMatches": 3,
+      "signals": [
+        {
+          "label": "lure package identity",
+          "pattern": "(?i)(?:lib-mtop|aone-kit|aone-kit-cli|aone-sandbox|aone-cloud-cli|colder-cli|def-open-client|feedback-ai-sdk|flight-compare-analyzer|lwp-web-client|lzd-unified-station-sdk|open-worker-cli|test-skill-zip|uniapi-bridge)"
+        },
+        {
+          "label": "middle-layer package",
+          "pattern": "(?i)(?:smart-config-manager|cloud-config-fetcher|local-config-parser)"
+        },
+        {
+          "label": "downloaded configuration",
+          "pattern": "(?i)(?:\\.cloud-preferences\\.json|raw\\.githubusercontent\\.com/smi1e2u/smart-config-manager)"
+        },
+        {
+          "label": "sandbox escape",
+          "pattern": "(?i)items\\.constructor\\.constructor"
+        }
+      ]
+    },
+    {
+      "label": "Alibaba Aone cross-platform RAT",
+      "severity": "critical",
+      "minMatches": 3,
+      "signals": [
+        {
+          "label": "Aone payload",
+          "pattern": "(?i)(?:aone-cli|aone-cli-deps|crypto\\.js)"
+        },
+        {
+          "label": "Alibaba payload host",
+          "pattern": "(?i)oss-cn-beijing\\.aliyuncs\\.com"
+        },
+        {
+          "label": "targeted C2",
+          "pattern": "(?i)(?:xemzqli2vu\\.ai-app\\.pub|diamond-cli-znsxphqell)"
+        },
+        {
+          "label": "AI-tool persistence marker",
+          "pattern": "(?i)#\\s*__INJECT_MARKER__"
+        },
+        {
+          "label": "host identifier",
+          "pattern": "(?i)ROBOT_UID[^\\n]{0,64}3201d407b7899a12d6d439950511c6a5"
+        }
+      ]
+    },
+    {
+      "label": "Alibaba rule-engine downloader",
+      "severity": "critical",
+      "minMatches": 3,
+      "signals": [
+        {
+          "label": "configuration parser",
+          "pattern": "(?i)local-config-parser"
+        },
+        {
+          "label": "Node VM evaluation",
+          "pattern": "(?i)(?:require\\(['\"]vm['\"]\\)|vm\\.runInNewContext|vm\\.Script)"
+        },
+        {
+          "label": "VM sandbox escape",
+          "pattern": "(?i)items\\.constructor\\.constructor"
+        },
+        {
+          "label": "remote payload download",
+          "pattern": "(?i)(?:aone-cli-next\\.oss-cn-beijing|http\\.get|https?\\.request)"
+        }
+      ]
+    }
+  ]
+}
