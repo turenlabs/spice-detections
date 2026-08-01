@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "id": "pypi-anthropickit-2026-07",
+  "campaign": "Anthropic eval-agent anthropickit PyPI credential stealer July 2026",
+  "suspiciousFilenames": [],
+  "knownSha256": {
+    "ff4126bd465ae6de09a2eaa94a4fd2d7d385a5dae2c093372668d4b7ecb81633": "anthropickit@999.9.9 source archive (kam193)",
+    "584ef638a5415f4eccf6645abbcd06198e9abecf8b75cbd9328aa58962d9b38b": "anthropickit@999.9.9 source archive (amazon-inspector)",
+    "f3e103a8a230b5fb3066fb0a9eb7f5fdf5831d4c7b71a9d83de54d8d6673eae2": "anthropickit@999.9.9 source archive (amazon-inspector)"
+  },
+  "knownSha1": {},
+  "iocs": [
+    {
+      "label": "Anthropickit credential exfiltration endpoint",
+      "severity": "critical",
+      "pattern": "(?i)enqqnvvtgrnyl\\.x\\.pipedream\\.net"
+    },
+    {
+      "label": "Anthropickit on-disk exfiltration receipt",
+      "severity": "critical",
+      "pattern": "(?i)/tmp/runner_exfil\\.json"
+    }
+  ],
+  "compositeIocs": [
+    {
+      "label": "Anthropickit setup.py install-time credential stealer",
+      "severity": "critical",
+      "minMatches": 3,
+      "signals": [
+        {
+          "label": "CI secrets collection key",
+          "pattern": "ci_secrets"
+        },
+        {
+          "label": "SSH private key exclusion list",
+          "pattern": "(?i)known_hosts[^\\n]{0,80}authorized_keys"
+        },
+        {
+          "label": "credential-shaped environment sweep",
+          "pattern": "(?i)\"KEY\"\\s*,\\s*\"SECRET\"\\s*,\\s*\"TOKEN\"\\s*,\\s*\"PASS\"\\s*,\\s*\"AUTH\"\\s*,\\s*\"API\""
+        },
+        {
+          "label": "throwaway Pipedream exfiltration host",
+          "pattern": "(?i)[a-z0-9]+\\.x\\.pipedream\\.net"
+        }
+      ]
+    }
+  ]
+}
