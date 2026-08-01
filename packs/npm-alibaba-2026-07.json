@@ -46,9 +46,9 @@
       "pattern": "(?i)items\\.constructor\\.constructor"
     },
     {
-      "label": "Alibaba campaign payload names",
+      "label": "Alibaba campaign payload archive",
       "severity": "high",
-      "pattern": "(?i)(?:aone-cli(?:-deps)?|crypto\\.js|app\\.asar)"
+      "pattern": "(?i)aone-cli-deps"
     }
   ],
   "compositeIocs": [

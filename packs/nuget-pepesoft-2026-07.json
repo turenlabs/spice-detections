@@ -66,17 +66,9 @@
       "label": "Pepesoft inherited AWS-style key",
       "severity": "critical",
       "pattern": "(?i)(?:5bd610283d9c4b4ead45ca4f1b35d0f4|21b4be57bd3743738393f44d9464e212)"
-    },
-    {
-      "label": "Pepesoft DNS-over-HTTPS resolver",
-      "severity": "high",
-      "pattern": "(?i)dns\\.google/resolve"
-    },
-    {
-      "label": "Pepesoft elevation clock resync",
-      "severity": "high",
-      "pattern": "(?i)(?:w32tm\\s+/resync|Start-Service\\s+w32time)"
-    },
+    }
+  ],
+  "compositeIocs": [
     {
       "label": "Pepesoft cloud telemetry and control payload",
       "severity": "critical",
@@ -101,6 +93,14 @@
         {
           "label": "shared host identity",
           "pattern": "(?i)(?:5bd610283d9c4b4ead45ca4f1b35d0f4|Global\\\\\\{5BD61028)"
+        },
+        {
+          "label": "DNS-over-HTTPS resolver",
+          "pattern": "(?i)dns\\.google/resolve"
+        },
+        {
+          "label": "elevation clock resync",
+          "pattern": "(?i)(?:w32tm\\s+/resync|Start-Service\\s+w32time)"
         }
       ]
     }
