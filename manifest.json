@@ -1,7 +1,25 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-08-01T17:31:35Z",
+  "updatedAt": "2026-08-04T20:06:40Z",
   "packs": [
+    {
+      "id": "chaindrop-2026-08",
+      "campaign": "ChainDrop npm worm August 2026",
+      "url": "packs/chaindrop-2026-08.json",
+      "affectedPackagesUrl": "packs/chaindrop-2026-08-packages.csv"
+    },
+    {
+      "id": "npm-malware-2026-08",
+      "campaign": "Early-August 2026 npm malware advisories",
+      "url": "packs/npm-malware-2026-08.json",
+      "affectedPackagesUrl": "packs/npm-malware-2026-08-packages.csv"
+    },
+    {
+      "id": "pypi-malware-2026-08",
+      "campaign": "Early-August 2026 PyPI malware advisories and credential stealers",
+      "url": "packs/pypi-malware-2026-08.json",
+      "affectedPackagesUrl": "packs/pypi-malware-2026-08-packages.csv"
+    },
     {
       "id": "pypi-anthropickit-2026-07",
       "campaign": "Anthropic eval-agent anthropickit PyPI credential stealer July 2026",
