@@ -1,7 +1,13 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-08-08T13:42:44Z",
+  "updatedAt": "2026-09-16T17:10:48Z",
   "packs": [
+    {
+      "id": "npm-malware-2026-09",
+      "campaign": "September 2026 Shai-Hulud npm reactivation",
+      "url": "packs/npm-malware-2026-09.json",
+      "affectedPackagesUrl": "packs/npm-malware-2026-09-packages.csv"
+    },
     {
       "id": "chaindrop-2026-08",
       "campaign": "ChainDrop npm worm August 2026",

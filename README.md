@@ -17,4 +17,6 @@ Alibaba-targeted npm RAT cluster. Earlier July coverage includes Miasma v3 in As
 Jscrambler, the nodemon-sudo/tslint-conf runtime backdoor, the Braintree.Net payment-data skimmer,
 Injective Labs SDK, and PolinRider. Earlier packs cover Miasma/Hades/Mini Shai-Hulud, TrapDoor,
 Laravel Lang, node-ipc, axios, Mastra, Phantom Gyp, Solana FakeFix, and the corrected June IronWorm
-package set.
+package set. The September 16 refresh adds the four-package Shai-Hulud
+reactivation wave published on September 7, including the shared payload hash
+and exact affected versions.
