@@ -22,4 +22,6 @@ reactivation wave published on September 7, including the shared payload hash
 and exact affected versions. The September 23 refresh adds the August crates.io
 build-script compromise, the Equation of Compromise npm campaign, and a
 high-confidence Twilio-themed npm probe subset. These additions use exact
-package versions and campaign-specific artifact indicators.
+package versions and campaign-specific artifact indicators. A September 23
+MemTensor refresh adds the compromised OpenClaw npm plugin and PyPI `MemoryOS`
+releases with exact package versions and cross-platform payload hashes.
