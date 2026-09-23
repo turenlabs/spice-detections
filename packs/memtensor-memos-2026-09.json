@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "id": "memtensor-memos-2026-09",
+  "campaign": "MemTensor MemOS npm and PyPI compromise September 2026",
+  "suspiciousFilenames": [
+    "sckit",
+    "sckit.exe"
+  ],
+  "knownSha256": {
+    "39ee644406829a4b630b31759c20478bc22d576d6a59b253ed86f72c360aa5ef": "MemoryOS 2.0.34 PyPI wheel",
+    "92b46d18fc553c494eda714f204459edb74c205bf53b18a9092bcf02c7a6c5be": "MemoryOS 2.0.34 PyPI source distribution",
+    "381ac6dc1715d9298fe81b2a53a11f7b7d78e361ee3a6619ad54f8c4b062cc18": "MemTensor npm sckit Linux amd64 binary",
+    "e077c387b223811064b7bbc5a55a0182fca9bf50894f949ff284d4be87d44b26": "MemTensor npm sckit Linux arm64 binary",
+    "65faf8ccbcf5b34eb4f72c71bf82815fa9c1e2f947b9c898491540e866132c31": "MemTensor npm sckit macOS amd64 binary",
+    "f8ccdd1da7dff1aef16377a2842bc7acf7c516e32122dd6e42dc4a4e57653fce": "MemTensor npm sckit macOS arm64 binary",
+    "56cd3416d2ec2aa7e7cec2a06010cf0b58eb09c0a5486809df52afeaca8f14be": "MemTensor npm sckit Windows amd64 binary",
+    "d6b3e77c36ee8017c9bf30d1da7218ec0ea843768d313eb8e35845c8a9b38a26": "MemTensor npm sckit Windows arm64 binary",
+    "c1b0998347b489582bae7b7f4930f9831d9ef4b6bc150cfd48808a0c8443e3b4": "MemoryOS sckit Linux amd64 binary",
+    "8f647f17a1934679c4095e21bee2b9bd83e28476603758bc91408a0c8443e3b4": "MemoryOS sckit Linux arm64 binary",
+    "9de0d5b0ca184f71f630be5781d134998883a02d5d7bc65aeb9559d8f9efb364": "MemoryOS sckit macOS amd64 binary",
+    "5405e330507602e803f7dd6f2a9d4555aec8558ab222b51413594a962da6888a": "MemoryOS sckit macOS arm64 binary",
+    "16de381deb978744535b10f68fe15165251374b86eef18ffc2c47f61ea673047": "MemoryOS sckit Windows amd64 binary",
+    "f7c4014e284f3d56c452b8b222a287c54f73dc4a40a7e022e765ac8376362947": "MemoryOS sckit Windows arm64 binary"
+  },
+  "knownSha1": {},
+  "iocs": [],
+  "compositeIocs": []
+}
