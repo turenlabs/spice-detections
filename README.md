@@ -19,4 +19,7 @@ Injective Labs SDK, and PolinRider. Earlier packs cover Miasma/Hades/Mini Shai-H
 Laravel Lang, node-ipc, axios, Mastra, Phantom Gyp, Solana FakeFix, and the corrected June IronWorm
 package set. The September 16 refresh adds the four-package Shai-Hulud
 reactivation wave published on September 7, including the shared payload hash
-and exact affected versions.
+and exact affected versions. The September 23 refresh adds the August crates.io
+build-script compromise, the Equation of Compromise npm campaign, and a
+high-confidence Twilio-themed npm probe subset. These additions use exact
+package versions and campaign-specific artifact indicators.

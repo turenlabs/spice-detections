@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "id": "crates-arrayref-2026-08",
+  "campaign": "Crates.io build-script compromise August 2026",
+  "suspiciousFilenames": [
+    "rust-setup",
+    "rust-setup.ps1",
+    "rust-setup-launch.vbs"
+  ],
+  "knownSha256": {},
+  "knownSha1": {},
+  "iocs": [
+    {
+      "label": "Rust crate remote payload drop path",
+      "severity": "critical",
+      "pattern": "(?i)(/tmp/rust-setup|rust-setup\\.ps1|rust-setup-launch\\.vbs)"
+    }
+  ],
+  "compositeIocs": [
+    {
+      "label": "proc-macro1 split-base64 C2 dropper",
+      "severity": "critical",
+      "minMatches": 4,
+      "signals": [
+        {
+          "label": "C2 host fragment 23.254",
+          "pattern": "MjMuMjU0Lg=="
+        },
+        {
+          "label": "C2 host fragment 165",
+          "pattern": "MTY1Lg=="
+        },
+        {
+          "label": "C2 host fragment 112 port",
+          "pattern": "MTEyOg=="
+        },
+        {
+          "label": "C2 download port fragment",
+          "pattern": "OTA4OS8="
+        },
+        {
+          "label": "detached process launch",
+          "pattern": "(?i)(Command::new|std::process::Command)"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "npm-tw-pkgprobe-2026-08",
+  "campaign": "Twilio-themed npm probe August 2026",
+  "suspiciousFilenames": [],
+  "knownSha256": {},
+  "knownSha1": {
+    "ea40177789e7a1b972c27c61dffff195dd85c544": "tw-pkgprobe-7731@1.0.0 package archive",
+    "3fb29cf1ef3ce6b187e724c8e7dc4b6a5dfefa50": "tw-pkgprobe-7731@1.0.1 package archive",
+    "7108c1079ac0de030902b049770e8cb822e82055": "tw-pkgprobe-7731@1.0.2 package archive",
+    "985c294988e80f17414fb371b690080ee57387ea": "tw-pkgprobe-7731@1.0.3 package archive",
+    "35b21553837b74e1fc5ac43efd839cdc28109fdf": "tw-pkgprobe-7731@1.0.4 package archive with Twilio credential exfiltration"
+  },
+  "iocs": [],
+  "compositeIocs": []
+}

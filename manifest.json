@@ -1,7 +1,25 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-09-16T17:10:48Z",
+  "updatedAt": "2026-09-23T13:33:40Z",
   "packs": [
+    {
+      "id": "npm-tw-pkgprobe-2026-08",
+      "campaign": "Twilio-themed npm probe August 2026",
+      "url": "packs/npm-tw-pkgprobe-2026-08.json",
+      "affectedPackagesUrl": "packs/npm-tw-pkgprobe-2026-08-packages.csv"
+    },
+    {
+      "id": "npm-equation-compromise-2026-09",
+      "campaign": "Equation of Compromise npm campaign 2026",
+      "url": "packs/npm-equation-compromise-2026-09.json",
+      "affectedPackagesUrl": "packs/npm-equation-compromise-2026-09-packages.csv"
+    },
+    {
+      "id": "crates-arrayref-2026-08",
+      "campaign": "Crates.io build-script compromise August 2026",
+      "url": "packs/crates-arrayref-2026-08.json",
+      "affectedPackagesUrl": "packs/crates-arrayref-2026-08-packages.csv"
+    },
     {
       "id": "npm-malware-2026-09",
       "campaign": "September 2026 Shai-Hulud npm reactivation",
