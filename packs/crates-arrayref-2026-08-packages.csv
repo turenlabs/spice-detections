@@ -1,0 +1,6 @@
+Package,Version,Ecosystem
+arrayref,= 0.3.10,crates
+internment,= 0.8.7,crates
+append-only-vec,= 0.1.9,crates
+proc-macro1,= 1.0.107,crates
+proc-macro-en,= 1.0.10,crates

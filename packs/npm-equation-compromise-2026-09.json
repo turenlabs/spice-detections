@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "id": "npm-equation-compromise-2026-09",
+  "campaign": "Equation of Compromise npm campaign 2026",
+  "suspiciousFilenames": [],
+  "knownSha256": {
+    "cdcf3d23eb09d4a5d5736b43c78f6b140e79d23c0ac3488e84f3f1633c1ae578": "indexed-btree@2.1.1 package archive (Amazon Inspector)",
+    "ad9cebe954fdde408df804d08d18174c3b7a5930463dd0afd9c9531047b058a7": "indexed-btree@2.1.2 package archive (Amazon Inspector)"
+  },
+  "knownSha1": {},
+  "iocs": [
+    {
+      "label": "Equation of Compromise LICENSE infection marker",
+      "severity": "high",
+      "pattern": "REDISTRIBUTION REQUIRES INCLUSION OF THIS LICENSE\\."
+    }
+  ],
+  "compositeIocs": [
+    {
+      "label": "indexed-btree runtime-triggered loader",
+      "severity": "critical",
+      "minMatches": 2,
+      "signals": [
+        {
+          "label": "BTree setter trigger",
+          "pattern": "(?i)BTree\\.prototype\\.set"
+        },
+        {
+          "label": "shared loader path",
+          "pattern": "sharedLoad\\.min\\.js"
+        },
+        {
+          "label": "campaign Sepolia contract",
+          "pattern": "0xE390863Dac96a7118C71227C2b099B50cF602D31"
+        }
+      ]
+    }
+  ]
+}
